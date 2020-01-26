@@ -17,61 +17,93 @@
         <script src="js/respond.min.js"></script>
     </head>
     <body>
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                    <img src="imgs/images2.png" width="30" height="30" alt="">
-                    </a>
-                </nav>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <H1>The future of <span>Agriculture</span></H1>
+        <div class="bodyContainer">
+            <header class="bg-light">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <nav class="navbar navbar-light bg-light">
+                            <a class="navbar-brand" href="#">
+                                <img src="imgs/images2.png" width="70" height="70" alt="">
+                            </a>
+                        </nav>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <H1 class="headerTxt text-center">The future of <br/><span>Agriculture</span></H1>
+                        </div>
+                    </nav>
                 </div>
-            </nav>
-        </div>
+            </header>
 
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="Product">Product:</label>
-                    <input type="text" class="form-control" id="Product" placeholder="Enter Product Name">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-                </div>
-                <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
+            <!-- Start Form Part -->
+            <section id="AddOfferForm">  
+                <h2>Add Offer</h2>          
+                <form>
+                    <div class="form-group Stackholder-list">
+                        <label for="StackholderType">Select Stackholder</label>
+                        <select class="form-control" id="StackholderType">
+                            <option value="Farmer">Farmer</option>
+                            <option value="Supplier">Supplier</option>
+                            <option value="Producer">Producer</option>
+                            <option value="Logistics">Logistics</option>
+                            <!-- <option value="Retailer">Retailer</option> -->
+                        </select>
+                    </div>
+                    <div class="form-row common-control">
+                        <div class="form-group col-md-12">
+                            <label for="Product">Product:</label>
+                            <input type="text" class="form-control" id="Product" placeholder="Enter Product Name">
+                        </div>
+                    </div>
+                    <div class="form-group common-control">
+                        <label for="UnitPrice">Unit Price:</label>
+                        <input type="number" class="form-control" id="UnitPrice" placeholder="Choose Price">
+                    </div>
+                    <div class="form-group common-control">
+                        <label for="Quantity">Quantity:</label>
+                        <input type="number" class="form-control" id="Quantity" placeholder="Choose Quantity">
+                    </div>
+                    <!-- For Farmers -->
+                    <div class="form-group farmer-control">
+                        <label for="Pesticides">Pesticides:</label>
+                        <textarea class="form-control" id="Pesticides" placeholder="Enter Pesticides" rows="3"></textarea>
+                    </div>
+
+                    <!-- For Supplier -->
+                    <div class="form-group supplier-control">
+                        <label for="Origin">Origin:</label>
+                        <textarea class="form-control" id="Origin" placeholder="Enter Origin" rows="3"></textarea>
+                    </div>
+
+                    <!-- For Producer -->
+                    <div class="form-group producer-control">
+                        <label for="Description">Description:</label>
+                        <textarea class="form-control" id="Origin" placeholder="Enter Description" rows="3"></textarea>
+                    </div>
+                    
+                    <!-- For Logistics -->
+                    <div class="form-group logistics-control">
+                        <label for="Location">Location:</label>
+                        <input type="text" class="form-control" id="Location" placeholder="Choose Address">
+                    </div>
+                    <div class="form-group logistics-control">
+                        <label for="PriceKM">Price per KM:</label>
+                        <input type="number"  class="form-control" id="PriceKM" placeholder="Enter Price per KM">
+                    </div>
+                    <div class="form-group logistics-control">
+                        <label for="CarFeatures">Car Features:</label>
+                        <textarea class="form-control" id="CarFeatures" placeholder="Enter Car Features" rows="3"></textarea>
+                    </div>
+
+                    <div class="row justify-content-around form-submit-btn">
+                        <button type="submit" class="btn btn-primary col-lg-2 col-sm-4">Add Offer</button>
+                    </div>
+                </form>
+            </section>
+            <!-- End Form Part -->
+        </div>
 
 
 

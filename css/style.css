@@ -8,7 +8,7 @@ body{
 .bodyContainer{
     z-index: 9999999999999999999;
     background-color: rgba(247, 247, 247, 0.4117647058823529);
-    height: 1000px;
+    min-height: 1000px;
 }
 /* navbar */
 
