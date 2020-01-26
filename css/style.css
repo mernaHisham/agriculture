@@ -1,0 +1,34 @@
+body{
+    background: url('../imgs/images.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.bodyContainer{
+    z-index: 9999999999999999999;
+    background-color: rgba(247, 247, 247, 0.4117647058823529);
+    height: 1000px;
+}
+/* navbar */
+
+header{
+    box-shadow: 2px 2px 18px #5d5c5c;
+}
+nav.bg-light,header.bg-light{
+    background-color: #f0f0f0 !important;
+}
+
+nav .headerTxt{
+    font-size: 27px;
+    color: #7aad37;
+    text-transform: capitalize;
+}
+nav .headerTxt span{
+    font-size: 40px;
+    color: black;
+    text-transform: capitalize;
+}
+nav #navbarNav{
+    margin-left: 25%;
+}
