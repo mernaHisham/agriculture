@@ -88,6 +88,9 @@ span.ourWords{
     font-size: 24px;
     margin: 24px
 }
+.FormSection .traceForm input{
+    margin: 53px 32px;
+}
 /* footer paragraph */
 footer p {
     color: black;
@@ -95,5 +98,5 @@ footer p {
     font-size: 15px;
     margin: 0px 10px;
     position: relative;
-    top: 4px
+    top: 80px
 }
