@@ -6,9 +6,9 @@ body{
     background-size: cover;
 }
 .bodyContainer{
-    z-index: 9999999999999999999;
-    background-color: rgba(247, 247, 247, 0.4117647058823529);
-    min-height: 1000px;
+    z-index: 999;
+    background-color: rgba(247, 247, 247, 0.41);
+    height:  694px;
 }
 /* navbar */
 
@@ -31,4 +31,72 @@ nav .headerTxt span{
 }
 nav #navbarNav{
     margin-left: 25%;
+}
+span.ourWords{
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    right: 37px;
+    font-weight: bold;
+    color: #7aad37;
+}
+/* Form Style */
+.FormSection{
+    padding: 70px 0px;
+}
+.FormSection input{
+    margin: 32px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.FormSection input.btn{
+    background: #7aad37c7;
+    padding: 7px;
+    color: #fff;
+    font-weight: bold;
+}
+.form-control:focus{
+
+    border-color: #7aad37c7;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #7aad37c7
+}
+.FormSection .forgetPassLink{
+    float: right;
+    color: darkblue;
+    font-weight: bold;
+    position: relative;
+    top: -20px;
+}
+.FormSection span{
+    position: relative;
+    top: -16px;
+    color: black;
+    left: 37px;
+}
+.btn:focus{
+    border-color: #7aad37c7;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #7aad37c7
+}
+.FormSection span a{
+    color: darkblue;
+    font-weight: bold;
+   
+}
+.FormSection .traceForm h3{
+    font-size: 24px;
+    margin: 24px
+}
+.FormSection .traceForm input{
+    margin: 53px 32px;
+}
+/* footer paragraph */
+footer p {
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0px 10px;
+    position: relative;
+    top: 80px
 }
