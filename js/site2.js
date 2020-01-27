@@ -5,7 +5,7 @@ $(()=>{
     
 })
 function selectStackHolder() {
-    debugger
+    //debugger
     var valueSelected = this.value;
     switch (valueSelected) {
         case "Farmer":

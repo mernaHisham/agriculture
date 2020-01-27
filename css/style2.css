@@ -175,3 +175,8 @@
     width: 100%;
     text-align: center;
 }
+.timeline-header p{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
