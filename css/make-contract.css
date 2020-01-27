@@ -1,3 +1,25 @@
+nav #navbarNav{
+    justify-content: space-between;
+}
+.navbar-nav .nav-item .nav-link{
+    color: #76945e;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border-bottom: 5px solid transparent;
+    font-weight: bold;
+    transition: color 1s, background-color 1s, border-bottom .5s;
+}
+
+.navbar-nav .nav-item .nav-link:hover{
+    color: white !important;
+    background-color: #76945e;
+    border-bottom: 5px solid white;
+    box-sizing: border-box;
+}
+
+
+
+
 .contracts-container{
     padding: 50px 0;
 }
