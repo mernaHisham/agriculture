@@ -2,7 +2,10 @@ $(()=>{
     selectStackHolder();
     $('#StackholderType').on('change', selectStackHolder);
 
-    
+    $('.btn.btn-outline-primary').on('click', function () {
+        //alert('s')
+        //$(this).css({'background-color': '#76945e', 'color':'white', 'border-color':'#76945e'})
+    })
 })
 function selectStackHolder() {
     //debugger
