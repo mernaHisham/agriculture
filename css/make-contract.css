@@ -7,7 +7,7 @@ nav #navbarNav{
     box-sizing: border-box;
     border-bottom: 5px solid transparent;
     font-weight: bold;
-    transition: color 1s, background-color 1s, border-bottom .5s;
+    transition: color .5s, background-color .5s, border-bottom .25s;
 }
 
 .navbar-nav .nav-item .nav-link:hover{
