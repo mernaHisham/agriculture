@@ -9,7 +9,7 @@ body{
     z-index: 999;
     background-color: rgba(247, 247, 247, 0.41);
     min-height:  123vh;
-    
+    padding-bottom: 20px;
 }
 /* navbar */
 nav #navbarNav{
@@ -36,12 +36,18 @@ nav #navbarNav{
 }
 
 @media screen and (max-width: 991px){
-.nav-hiddable{
-    display: inline;
+    .nav-hiddable{
+        display: inline;
+    }
+    .main-hiddable-nav{
+        display: none;
+    }
 }
-.main-hiddable-nav{
-    display: none;
-}
+@media screen and (max-width: 600px){
+    #AddOfferForm {
+        width: 90% !important;
+        padding: 40px !important;
+    }
 }
 
 header{
@@ -110,7 +116,8 @@ nav.bg-light.bg-grey ul li.nav-item a{
 }
 /* Form Style */
 .FormSection{
-    padding: 70px 0px;
+    padding: 70px;
+    margin-bottom: 270px;
 }
 .FormSection input,.FormSection textarea{
     /* margin: 32px;
@@ -193,10 +200,10 @@ footer p {
 
 /* acount */
 .Account input{
-    margin: 0px 32px 32px 0px;
+    /* margin: 0px 32px 32px 0px; */
 }
 input.LblInput{
-    margin: -7px 32px 32px 32px;
+    /* margin: -7px 32px 32px 32px; */
 }
  label{
     font-weight: 700;
@@ -204,7 +211,7 @@ input.LblInput{
     font-size: 21px;
 }
 .Registration label{
-    margin-left: 33px;
+    /* margin-left: 33px; */
 
 }
 .Account input.btn{
