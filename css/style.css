@@ -136,17 +136,26 @@ nav.bg-light.bg-grey ul li.nav-item a{
 }
 /* footer paragraph */
 footer{
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: 0px; */
+    border-top: 2px solid white;
+    padding-top: 5px;
+    z-index: 999;
+    background-color: #F0F0F0;
+    min-height: 7vh;
+    margin-top: auto;
 }
 footer p {
-    color: black;
+    background-color: inherit;
+    color: #7aad37c7;
+    font-weight: bold;
+    /* color: black;
     font-weight: 500;
     font-size: 15px;
     margin: 0px 10px;
     position: relative;
-    top: 80px
+    top: 80px */
 }
 
 /* acount */
