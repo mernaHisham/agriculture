@@ -12,6 +12,37 @@ body{
     
 }
 /* navbar */
+nav #navbarNav{
+    justify-content: space-between;
+}
+.navbar-nav:not(.main-hiddable-nav) .nav-item:not(.main-hiddable-nav) .nav-link:not(.main-hiddable-nav){
+    color: #76945e;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border-bottom: 5px solid transparent;
+    font-weight: bold;
+    transition: color .5s, background-color .5s, border-bottom .25s;
+}
+
+.navbar-nav:not(.main-hiddable-nav) .nav-item:not(.main-hiddable-nav) .nav-link:not(.main-hiddable-nav):hover{
+    color: white !important;
+    background-color: #76945e;
+    border-bottom: 5px solid white;
+    box-sizing: border-box;
+}
+
+.nav-hiddable{
+    display: none;
+}
+
+@media screen and (max-width: 991px){
+.nav-hiddable{
+    display: inline;
+}
+.main-hiddable-nav{
+    display: none;
+}
+}
 
 header{
     box-shadow: 2px 2px 18px #5d5c5c;
@@ -82,8 +113,8 @@ nav.bg-light.bg-grey ul li.nav-item a{
     padding: 70px 0px;
 }
 .FormSection input,.FormSection textarea{
-    margin: 32px;
-    padding: 20px;
+    /* margin: 32px;
+    padding: 20px; */
     background-color: rgba(255, 255, 255, 0.8);
 }
 .FormSection input.btn{
@@ -103,13 +134,15 @@ nav.bg-light.bg-grey ul li.nav-item a{
     color: darkblue;
     font-weight: bold;
     position: relative;
-    top: -20px;
+    top: -25px;
+    margin-right: 2px;
 }
 .FormSection span{
     position: relative;
-    top: -16px;
     color: black;
-    left: 37px;
+    margin-left: 14px;
+    /* top: -16px;
+    left: 37px; */
 }
 .btn:focus{
     border-color: #7aad37c7;
@@ -126,7 +159,7 @@ nav.bg-light.bg-grey ul li.nav-item a{
     margin: 24px
 }
 .FormSection .traceForm input{
-    margin: 53px 32px;
+    /* margin: 53px 32px; */
 }
 
 /* Registration page */
@@ -201,4 +234,48 @@ input.LblInput{
 }
 .HomeSection ul li a{
     color: #fff
+}
+
+.main-action{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    background-color: rgba(75, 103, 38, 0.87);
+    margin: 21px;
+    padding-top: 29px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.main-action:hover{
+    background-color: #7aad37;
+}
+.main-action:hover a{
+    color: white !important;
+}
+.main-action a{
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #7aad37 ;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.HomeSection .container .row{
+    width: 100%;
+    height: 300px;
+}
+
+#AddOfferForm {
+    margin: 50px auto;
+    width: 70%;
+    padding: 50px;
+    background-color: #F0F0F0;
+    opacity: .9;
+    border-radius: 10px;
+    color: #76945e;
+}
+.form-group{
+    margin-bottom: 30px;
 }

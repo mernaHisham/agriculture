@@ -1,7 +1,7 @@
 nav #navbarNav{
     justify-content: space-between;
 }
-.navbar-nav .nav-item .nav-link{
+.navbar-nav:not(.main-hiddable-nav) .nav-item:not(.main-hiddable-nav) .nav-link:not(.main-hiddable-nav){
     color: #76945e;
     margin-right: 5px;
     box-sizing: border-box;
@@ -10,13 +10,12 @@ nav #navbarNav{
     transition: color .5s, background-color .5s, border-bottom .25s;
 }
 
-.navbar-nav .nav-item .nav-link:hover{
+.navbar-nav:not(.main-hiddable-nav) .nav-item:not(.main-hiddable-nav) .nav-link:not(.main-hiddable-nav):hover{
     color: white !important;
     background-color: #76945e;
     border-bottom: 5px solid white;
     box-sizing: border-box;
 }
-
 
 
 
