@@ -15,6 +15,10 @@ body{
 nav #navbarNav{
     justify-content: space-between;
 }
+nav .navbar-brand img{
+    position: relative;
+    left: -63px;
+}
 .navbar-nav:not(.main-hiddable-nav) .nav-item:not(.main-hiddable-nav) .nav-link:not(.main-hiddable-nav){
     color: #76945e;
     margin-right: 5px;
