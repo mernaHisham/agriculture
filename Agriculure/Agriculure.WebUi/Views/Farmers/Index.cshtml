@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Agriculure.WebUi.Models.Farmer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerLiecnse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerNID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmerSID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerLiecnse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerNID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmerSID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

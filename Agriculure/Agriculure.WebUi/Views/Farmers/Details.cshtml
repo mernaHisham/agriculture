@@ -1,0 +1,74 @@
+﻿@model Agriculure.WebUi.Models.Farmer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Farmer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerLiecnse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerLiecnse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerNID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerNID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmerSID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmerSID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

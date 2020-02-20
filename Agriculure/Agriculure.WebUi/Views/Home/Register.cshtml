@@ -1,0 +1,57 @@
+﻿@model Agriculure.WebUi.ViewModel.FarmerVM
+@{
+    ViewBag.Title = "Register";
+}
+<section class="FormSection" id="AddOfferForm">
+    <div class="container Registration">
+        <div class="row">
+            @using (Html.BeginForm("PostFarmer", "Home", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12" }))
+            {
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.TextBoxFor(z => z.FarmerName, new { @class = "form-control", placeholder = "User name" })
+                    @Html.ValidationMessageFor(z => z.FarmerName, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.TextBoxFor(z => z.FarmerEmail, new { @class = "form-control", placeholder = "Farmer Email" })
+                    @Html.ValidationMessageFor(z => z.FarmerEmail, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.TextBoxFor(z => z.FarmerRole, new { @class = "form-control", placeholder = "Farmer Role" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.TextBoxFor(z => z.FarmerAddress, new { @class = "form-control", placeholder = "Farmer Address" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.TextBoxFor(z => z.FarmerNID, new { @class = "form-control", placeholder = "FarmerNID" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    <label>
+                        Lisence:
+                    </label>
+                    @Html.TextBoxFor(z => z.FarmerLiecnse, new { @class = "form-control", placeholder = "Farmer Liecnse" })
+                </div>
+                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                    @Html.DropDownListFor(z => z.FarmerSID, null, new { @class = "form-control" })
+                </div>
+                @*<div class="form-group col-md-4 col-lg-4 col-12 pull-left">
+                        <input class="form-control" type="email" placeholder="Email" />
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 col-12 pull-left">
+                        <input class="btn btn-block" type="button" value="Attach" />
+                    </div>
+
+                    <div class="form-group col-md-3 col-lg-3 col-12 pull-left btnSubmit">
+                        <input class="btn btn-block" type="submit" value="Cancel" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                        <textarea class="form-control" placeholder="national ID"></textarea>
+                    </div>*@
+                <div class="form-group col-md-3 col-lg-3 col-12 pull-left btnSubmit">
+                    <input class="btn btn-block" type="submit" value="Register" />
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
