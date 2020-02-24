@@ -8,7 +8,7 @@ namespace Agriculure.WebUi.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model12")
+            : base("name=Model1")
         {
         }
 
