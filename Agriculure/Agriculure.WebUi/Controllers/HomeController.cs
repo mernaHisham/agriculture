@@ -42,10 +42,19 @@ namespace Agriculure.WebUi.Controllers
             return View("Index");
         }
         [HttpPost]
-        public ActionResult Login(string Email,string Password) {
-            var farmer = _dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerLiecnse == Password).Any();
-            if(farmer == true)
+        public ActionResult Login(string Email, string Password) {
+            var farmer = _dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerPassword == Password).Any();
+            var farmerSupplier = _dbContext.FarmSuppliers.Where(z => z.FarmerSEmail == Email && z.FarmerSPassword == Password).Any();
+            var producer = _dbContext.Producers.Where(z => z.ProducerEmail == Email && z.ProducerPassword == Password).Any();
+            var retailer = _dbContext.Retailers.Where(z => z.RetailerEmail == Email && z.RetailerPassword == Password).Any();
+            var logistic = _dbContext.Logistics.Where(z => z.LogisticsEmail == Email && z.LogisticPassword == Password).Any();
+            if (farmer == true || farmerSupplier == true || producer == true || retailer == true|| logistic == true)
             {
+                if(farmer == true) Session["currentUser"] = _dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerPassword == Password).FirstOrDefault();
+                if(farmerSupplier == true) Session["currentUser"] = _dbContext.FarmSuppliers.Where(z => z.FarmerSEmail == Email && z.FarmerSPassword == Password).FirstOrDefault();
+                if (producer == true) Session["currentUser"] = _dbContext.Producers.Where(z => z.ProducerEmail == Email && z.ProducerPassword == Password).FirstOrDefault();
+                if (retailer == true) Session["currentUser"] = _dbContext.Retailers.Where(z => z.RetailerEmail == Email && z.RetailerPassword == Password).FirstOrDefault();
+                if (logistic == true) Session["currentUser"] = _dbContext.Logistics.Where(z => z.LogisticsEmail == Email && z.LogisticPassword == Password).FirstOrDefault();
                 return RedirectToAction("Hello");
             }
             else
