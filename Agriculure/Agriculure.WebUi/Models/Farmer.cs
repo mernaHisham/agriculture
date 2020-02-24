@@ -40,6 +40,9 @@ namespace Agriculure.WebUi.Models
 
         public long FarmerSID { get; set; }
 
+        [StringLength(50)]
+        public string FarmerPassword { get; set; }
+
         public virtual FarmSupplier FarmSupplier { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

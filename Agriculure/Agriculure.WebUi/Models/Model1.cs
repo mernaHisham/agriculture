@@ -17,6 +17,7 @@ namespace Agriculure.WebUi.Models
         public virtual DbSet<Logistic> Logistics { get; set; }
         public virtual DbSet<Producer> Producers { get; set; }
         public virtual DbSet<Retailer> Retailers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
