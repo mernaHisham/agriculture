@@ -37,6 +37,9 @@ namespace Agriculure.WebUi.Models
         [StringLength(50)]
         public string FarmerSNID { get; set; }
 
+        [StringLength(50)]
+        public string FarmerSPassword { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Farmer> Farmers { get; set; }
 

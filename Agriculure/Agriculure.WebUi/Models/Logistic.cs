@@ -38,6 +38,9 @@ namespace Agriculure.WebUi.Models
 
         public long ProducerID { get; set; }
 
+        [StringLength(50)]
+        public string LogisticPassword { get; set; }
+
         public virtual Producer Producer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

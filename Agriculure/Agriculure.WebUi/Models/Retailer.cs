@@ -40,6 +40,10 @@ namespace Agriculure.WebUi.Models
 
         public long LogisticsID { get; set; }
 
+        [Required]
+        [StringLength(500)]
+        public string RetailerPassword { get; set; }
+
         public virtual Logistic Logistic { get; set; }
 
         public virtual Producer Producer { get; set; }
