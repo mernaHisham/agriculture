@@ -55,18 +55,18 @@ namespace Agriculure.WebUi.Controllers
         [HttpPost]
         public ActionResult PostFarmer([Bind(Include = "ID,FarmerName,FarmerAddress,FarmerEmail,FarmerRole,FarmerLiecnse,FarmerNID,FarmerSID")] FarmerVM objVM)
         {
-            Farmer _Farmer = new Farmer()
-            {
-                FarmerName = objVM.FarmerName,
-                FarmerEmail = objVM.FarmerEmail,
-                FarmerAddress = objVM.FarmerAddress,
-                FarmerLiecnse = objVM.FarmerLiecnse,
-                FarmerNID = objVM.FarmerNID,
-                FarmerRole = objVM.FarmerRole,
-                FarmerSID = objVM.FarmerSID
-            };
-            _dbContext.Farmers.Add(_Farmer);
-            _dbContext.SaveChanges();
+            //Farmer _Farmer = new Farmer()
+            //{
+            //    FarmerName = objVM.FarmerName,
+            //    FarmerEmail = objVM.FarmerEmail,
+            //    FarmerAddress = objVM.FarmerAddress,
+            //    FarmerLiecnse = objVM.FarmerLiecnse,
+            //    FarmerNID = objVM.FarmerNID,
+            //    FarmerRole = objVM.FarmerRole,
+            //    FarmerSID = objVM.FarmerSID
+            //};
+            //_dbContext.Farmers.Add(_Farmer);
+            //_dbContext.SaveChanges();
             return View("Index");
         }
         [HttpPost]
