@@ -8,7 +8,7 @@ namespace Agriculure.WebUi.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model11")
+            : base("name=Model1")
         {
         }
 
@@ -48,8 +48,9 @@ namespace Agriculure.WebUi.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Offers)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.offerowner);
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.offerowner)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Products)

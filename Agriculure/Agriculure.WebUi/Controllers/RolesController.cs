@@ -21,7 +21,7 @@ namespace Agriculure.WebUi.Controllers
         }
 
         // GET: Roles/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -46,7 +46,7 @@ namespace Agriculure.WebUi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RoleName")] Role role)
+        public ActionResult Create([Bind(Include = "RoleName")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace Agriculure.WebUi.Controllers
         }
 
         // GET: Roles/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -90,7 +90,7 @@ namespace Agriculure.WebUi.Controllers
         }
 
         // GET: Roles/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace Agriculure.WebUi.Controllers
         // POST: Roles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Role role = db.Roles.Find(id);
             db.Roles.Remove(role);

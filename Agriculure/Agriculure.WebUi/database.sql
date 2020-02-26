@@ -1,6 +1,6 @@
 USE [AgricultureII]
 GO
-/****** Object:  Table [dbo].[Contracts]    Script Date: 2/26/2020 9:42:56 AM ******/
+/****** Object:  Table [dbo].[Contracts]    Script Date: 2/26/2020 5:44:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[Contracts](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Offer]    Script Date: 2/26/2020 9:42:56 AM ******/
+/****** Object:  Table [dbo].[Offer]    Script Date: 2/26/2020 5:44:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,15 +30,15 @@ GO
 CREATE TABLE [dbo].[Offer](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[ProductID] [bigint] NOT NULL,
-	[StartDate] [datetime] NULL,
-	[EndDate] [datetime] NULL,
-	[Status] [bit] NULL,
-	[offerowner] [bigint] NULL,
-	[Descreption] [nvarchar](4000) NULL,
-	[unit] [nvarchar](50) NULL,
-	[quntity] [decimal](18, 2) NULL,
-	[price] [decimal](18, 2) NULL,
-	[currency] [nvarchar](50) NULL,
+	[StartDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NOT NULL,
+	[Status] [bit] NOT NULL,
+	[offerowner] [bigint] NOT NULL,
+	[Descreption] [nvarchar](4000) NOT NULL,
+	[unit] [nvarchar](50) NOT NULL,
+	[quntity] [decimal](18, 2) NOT NULL,
+	[price] [decimal](18, 2) NOT NULL,
+	[currency] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Offer] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -46,7 +46,7 @@ CREATE TABLE [dbo].[Offer](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 2/26/2020 9:42:56 AM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 2/26/2020 5:44:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -65,13 +65,13 @@ CREATE TABLE [dbo].[Products](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Role]    Script Date: 2/26/2020 9:42:56 AM ******/
+/****** Object:  Table [dbo].[Role]    Script Date: 2/26/2020 5:44:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Role](
-	[ID] [nvarchar](50) NOT NULL,
+	[ID] [int] NOT NULL,
 	[RoleName] [nvarchar](50) NULL,
  CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED 
 (
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[Role](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 2/26/2020 9:42:56 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 2/26/2020 5:44:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -90,7 +90,7 @@ CREATE TABLE [dbo].[Users](
 	[Name] [nvarchar](100) NOT NULL,
 	[Address] [nvarchar](200) NULL,
 	[Email] [nvarchar](100) NOT NULL,
-	[RoleID] [nvarchar](50) NOT NULL,
+	[RoleID] [int] NOT NULL,
 	[Liecnse] [nvarchar](100) NULL,
 	[NID] [nvarchar](100) NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
