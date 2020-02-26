@@ -8,71 +8,51 @@ namespace Agriculure.WebUi.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model1")
+            : base("name=Model11")
         {
         }
 
-        public virtual DbSet<Farmer> Farmers { get; set; }
-        public virtual DbSet<FarmSupplier> FarmSuppliers { get; set; }
-        public virtual DbSet<Logistic> Logistics { get; set; }
-        public virtual DbSet<Producer> Producers { get; set; }
-        public virtual DbSet<Retailer> Retailers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Farmer>()
-                .HasMany(e => e.Producers)
-                .WithRequired(e => e.Farmer)
+            modelBuilder.Entity<Offer>()
+                .HasMany(e => e.Contracts)
+                .WithRequired(e => e.Offer)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Farmer>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Farmer)
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Offers)
+                .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<FarmSupplier>()
-                .HasMany(e => e.Farmers)
-                .WithRequired(e => e.FarmSupplier)
+            modelBuilder.Entity<Role>()
+                .HasMany(e => e.Users)
+                .WithRequired(e => e.Role)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<FarmSupplier>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.FarmSupplier)
-                .HasForeignKey(e => e.FarmerSID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Contracts)
+                .WithOptional(e => e.User)
+                .HasForeignKey(e => e.sellerID);
 
-            modelBuilder.Entity<Logistic>()
-                .HasMany(e => e.Retailers)
-                .WithRequired(e => e.Logistic)
-                .HasForeignKey(e => e.LogisticsID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Contracts1)
+                .WithOptional(e => e.User1)
+                .HasForeignKey(e => e.buyerID);
 
-            modelBuilder.Entity<Logistic>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Logistic)
-                .HasForeignKey(e => e.LogisticsID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Offers)
+                .WithOptional(e => e.User)
+                .HasForeignKey(e => e.offerowner);
 
-            modelBuilder.Entity<Producer>()
-                .HasMany(e => e.Logistics)
-                .WithRequired(e => e.Producer)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Producer>()
-                .HasMany(e => e.Retailers)
-                .WithRequired(e => e.Producer)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Producer>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Producer)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Retailer>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Retailer)
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Products)
+                .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }
     }
