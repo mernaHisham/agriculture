@@ -314,7 +314,6 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Sys
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Newtonsoft.Json.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.pdb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
