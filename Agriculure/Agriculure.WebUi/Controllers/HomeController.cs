@@ -1,4 +1,5 @@
-﻿using Agriculure.WebUi.Models;
+﻿using Agriculure.WebUi.Custom_Classes;
+using Agriculure.WebUi.Models;
 using Agriculure.WebUi.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,41 @@ namespace Agriculure.WebUi.Controllers
             return View();
         }
         public ActionResult Hello() => View();
+
+        [HttpGet]
         public ActionResult Register()
         {
-            var SupplierLst = _dbContext.FarmSuppliers.ToList();
-            SelectList _SupplierLst = new SelectList(SupplierLst, "ID", "FarmerSName");
-            ViewBag.FarmerSID = _SupplierLst;
-            FarmerVM objVM = new FarmerVM();
+            //var SupplierLst = _dbContext.FarmSuppliers.ToList();
+            //SelectList _SupplierLst = new SelectList(SupplierLst, "ID", "FarmerSName");
+
+            //var stackHolderTypes = StackHolderType.GetStackHolderTypes();
+
+
+            var s = new List<StackHolderTypeModel>
+            {
+                new StackHolderTypeModel{ StackHolderTypeId = 0, StackHolderTypeName = "F"},
+                new StackHolderTypeModel{ StackHolderTypeId = 0, StackHolderTypeName = "L"},
+                new StackHolderTypeModel{ StackHolderTypeId = 0, StackHolderTypeName = "D"},
+                new StackHolderTypeModel{ StackHolderTypeId = 0, StackHolderTypeName = "S"},
+            };
+            SelectList _stackHolderTypes = new SelectList(s, "StackHolderTypeId", "StackHolderTypeName");
+
+
+            ViewBag.FarmerSID = _stackHolderTypes;
+
+            RegisterationObject objVM = new RegisterationObject();
+
+            //FarmerVM objVM = new FarmerVM();
             return View(objVM);
         }
+
+        [HttpPost]
+        public ActionResult Register(RegisterationObject registerationObject)
+        {
+
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult PostFarmer([Bind(Include = "ID,FarmerName,FarmerAddress,FarmerEmail,FarmerRole,FarmerLiecnse,FarmerNID,FarmerSID")] FarmerVM objVM)
         {

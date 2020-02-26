@@ -23,7 +23,7 @@ namespace Agriculure.WebUi.Controllers
         }
 
         [Route("Register")]
-        [HttpPost]
+        [HttpGet]
         public ActionResult Register()
         {
             return View();

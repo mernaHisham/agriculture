@@ -131,6 +131,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FarmersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Custom_Classes\RegisterationObject.cs" />
+    <Compile Include="Custom_Classes\StackHolderType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
