@@ -78,8 +78,6 @@ D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.Cor
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
-D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.initialMigration.resources
-D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
@@ -314,7 +312,6 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Sys
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Newtonsoft.Json.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.pdb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
@@ -323,3 +320,5 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Deb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.initial.resources
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
+D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.mm.resources
+D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache

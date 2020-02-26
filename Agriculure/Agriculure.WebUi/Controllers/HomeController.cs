@@ -110,7 +110,13 @@ namespace Agriculure.WebUi.Controllers
             {
                 var user = _dbContext.Users.Where(x => x.Email == Email && x.Password == Password).FirstOrDefault();
                 if (user != null)
+                {
+                    Session["currentUser"] = user;
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                    return RedirectToAction("Home", "Login");
+
             }
             
             return View();
@@ -130,6 +136,11 @@ namespace Agriculure.WebUi.Controllers
         {
             var user = _dbContext.Users.Where(x => x.ID == UserId).FirstOrDefault();
             return View(user);
+        }
+        public ActionResult Logout()
+        {
+            Session["currentUser"] = null;
+            return RedirectToAction("Index");
         }
 
     }

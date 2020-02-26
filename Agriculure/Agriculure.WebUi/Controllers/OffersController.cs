@@ -99,24 +99,24 @@ namespace Agriculure.WebUi.Controllers
         }
 
         // GET: Offers/Delete/5
-        public ActionResult Delete(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Offer offer = db.Offers.Find(id);
-            if (offer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(offer);
-        }
+        //public ActionResult Delete(long? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Offer offer = db.Offers.Find(id);
+        //    if (offer == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(offer);
+        //}
 
         // POST: Offers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(long id)
         {
             Offer offer = db.Offers.Find(id);
             db.Offers.Remove(offer);

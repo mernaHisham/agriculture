@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Agriculure.WebUi.Models
+@{ 
+    User currentUser = (Session["currentUser"] != null)? Session["currentUser"] as User: null;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset=utf-8 />
@@ -28,7 +32,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <nav class="navbar navbar-light bg-light">
                         <a class="navbar-brand" href="/agriculture/Index.html">
-                            <img src="imgs/images2.png" width="200" height="70" alt="">
+                            <img src="/imgs/images2.png" width="200" height="70" alt="">
                             <br />
                             <span class="ourWords">tranceparency . trust . trace</span>
                         </a>
@@ -42,7 +46,7 @@
                         <H1 class="headerTxt text-center">The future of <br /><span>Agriculture</span></H1>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-center" href="#">Add Offer</a>
+                                <a class="nav-link text-center" href="@Url.Action("Index", "Offers")">Add Offer</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-center" href="#">Make Contract</a>
@@ -52,14 +56,26 @@
                                 <a class="nav-link text-center" href="/Home">Home</a>
                             </li>
                             <li class="nav-item nav-hiddable">
-                                <a class="nav-link text-center" href="/Home">Login</a>
+                                @if ((Session["currentUser"]) != null)
+                                {
+                                    <a class="nav-link text-center" href="@Url.Action("Logout", "Home")">log out</a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-center" href="/Home/Login">Login</a>
+                                }
                             </li>
                             <li class="nav-item nav-hiddable">
                                 <a class="nav-link text-center" href="#">Product history</a>
                             </li>
-                            <li class="nav-item nav-hiddable">
-                                <a class="nav-link text-center" href="#">Account</a>
-                            </li>
+                            @if ((Session["currentUser"]) != null)
+                            {
+                                <li class="nav-item nav-hiddable">
+
+                                    <a class="nav-link text-center" href="@Url.Action("Profile", "Home", new { UserId = currentUser.ID })">@currentUser.Name</a>
+                                </li>
+
+                            }
                         </ul>
                     </div>
                 </nav>
@@ -71,14 +87,26 @@
                             <a class="nav-link" href="/Home">Home</a>
                         </li>
                         <li class="nav-item main-hiddable-nav">
-                            <a class="nav-link" href="/Home/Login">Login</a>
+                            @if (Session["currentUser"] != null)
+                            {
+                                <a class="nav-link text-center" href="@Url.Action("Logout", "Home")">log out</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-center" href="/Home/Login">Login</a>
+                            }
                         </li>
                         <li class="nav-item main-hiddable-nav">
-                            <a class="nav-link" href="/agriculture/Product-History.html">Product history</a>
+                            <a class="nav-link" href="~/Product-History.html">Product history</a>
                         </li>
-                        <li class="nav-item main-hiddable-nav">
-                            <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", new { UserId = 1 })">Account</a>
-                        </li>
+                        @if ((Session["currentUser"]) != null)
+                        {
+                            <li class="nav-item main-hiddable-nav">
+
+                                <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", new { UserId = currentUser.ID })">@currentUser.Name</a>
+                            </li>
+
+                        }
                     </ul>
                 </div>
             </nav>
@@ -90,7 +118,7 @@
         <section class="text-center">
             <div>
                 <p class="text-center">
-                    CopyRight &copy; 2020, all rights reserved <span>MasriTech</span>
+                    CopyRight &copy; 2020, all rights reserved <span></span>
                 </p>
             </div>
         </section>

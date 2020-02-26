@@ -5,84 +5,107 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<style>
+    #AddOfferForm {
+        width: 90%;
+    }
+</style>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descreption)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.unit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quntity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.currency)
-        </th>
-        <th></th>
-    </tr>
+<section class="FormSection" id="AddOfferForm">
+    <div class="Registration">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descreption)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.unit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quntity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.currency)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
 
-</table>
+        <h2>Offers: </h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-primary" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descreption)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.unit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quntity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.currency)
+                </th>
+                <th style="width: 170px; text-align: center">Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descreption)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.unit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quntity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.currency)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+
+                        <a href="@Url.Action("Delete","Offers", new { id = item.ID })"
+                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                            Delete
+                        </a>
+
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+
+</section>
+
