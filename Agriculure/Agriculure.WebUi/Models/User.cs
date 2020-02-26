@@ -31,8 +31,8 @@ namespace Agriculure.WebUi.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string RoleID { get; set; }
+        //[StringLength(50)]
+        public long RoleID { get; set; }
 
         [StringLength(100)]
         public string Liecnse { get; set; }

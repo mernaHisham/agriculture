@@ -1,4 +1,4 @@
-﻿@model Agriculure.WebUi.Custom_Classes.RegisterationObject
+﻿@model Agriculure.WebUi.ViewModel.UserVM
 
 @{
     Layout = null;
@@ -51,67 +51,78 @@
         <section class="FormSection" id="AddOfferForm">
             <div class="container Registration">
                 <div class="row">
+
                     @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12" }))
                     {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger text-uppercase", @style = "font-weight: bold;" })
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 UserName:
                             </label>
-                            @Html.TextBoxFor(z => z.UserName, new { @class = "form-control", placeholder = "UserName" })
-                            @Html.ValidationMessageFor(z => z.UserName, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(z => z.Name, new { @class = "form-control", placeholder = "UserName" })
+                            @Html.ValidationMessageFor(z => z.Name, "", new { @class = "text-danger font-bold", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 Password:
                             </label>
                             @Html.PasswordFor(z => z.Password, new { @class = "form-control", placeholder = "Password" })
-                            @Html.ValidationMessageFor(z => z.Password, null, new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(z => z.Password, "", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 Email:
                             </label>
-                            @Html.TextBoxFor(z => z.Email, new { @class = "form-control", @type="email", placeholder = "Email" })
-                            @Html.ValidationMessageFor(z => z.Email, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(z => z.Email, new { @class = "form-control", @type = "email", placeholder = "Email" })
+                            @Html.ValidationMessageFor(z => z.Email, "", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 Phone Number:
                             </label>
-                            @Html.TextBoxFor(z => z.PhoneNumber, new { @class = "form-control", @type = "tel", placeholder = "Phone Number" })
-                            @Html.ValidationMessageFor(z => z.PhoneNumber, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(z => z.Phone, new { @class = "form-control", @type = "tel", placeholder = "Phone Number" })
+                            @Html.ValidationMessageFor(z => z.Phone, "", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 Address:
                             </label>
                             @Html.TextBoxFor(z => z.Address, new { @class = "form-control", placeholder = "Address" })
-                            @Html.ValidationMessageFor(z => z.Address, null, new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(z => z.Address, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 National Id:
                             </label>
-                            @Html.TextBoxFor(z => z.NationalId, new { @class = "form-control", @type = "number", placeholder = "National Id" })
-                            @Html.ValidationMessageFor(z => z.NationalId, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(z => z.NID, new { @class = "form-control", @type = "number", placeholder = "National Id" })
+                            @Html.ValidationMessageFor(z => z.NID, "", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 User Type:
                             </label>
-                            @Html.DropDownListFor(z => z.StackHolderTypeId,
+                            @Html.DropDownListFor(z => z.RoleID,
                                 ViewBag.FarmerSID as SelectList,
                                 " Select a Stack Holder Type ",
                                 new { @class = "form-control", @style = "width:100%", @tabindex = "-1" })
+                            @Html.ValidationMessageFor(z => z.RoleID, "The User Type field is required", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
                         <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                             <label>
                                 Lisence:
                             </label>
-                            @Html.TextBoxFor(z => z.Lisence, new { @class = "form-control", placeholder = "Lisence" })
-                            @Html.ValidationMessageFor(z => z.Lisence, null, new { @class = "text-danger" })
+                            @Html.TextBoxFor(z => z.Liecnse, new { @class = "form-control", placeholder = "Lisence" })
+                            @Html.ValidationMessageFor(z => z.Liecnse, "", new { @class = "text-danger", @style = "font-weight: bold;" })
                         </div>
-                        
+                        <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                            <label>
+                                Company:
+                            </label>
+                            @Html.TextBoxFor(z => z.CompanyName, new { @class = "form-control", placeholder = "Company Name" })
+                            @Html.ValidationMessageFor(z => z.CompanyName, "", new { @class = "text-danger", @style = "font-weight: bold;" })
+                        </div>
+
                         @*<div class="form-group col-md-4 col-lg-4 col-12 pull-left">
                 <input class="form-control" type="email" placeholder="Email" />
             </div>

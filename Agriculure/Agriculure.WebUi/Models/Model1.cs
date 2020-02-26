@@ -20,6 +20,7 @@ namespace Agriculure.WebUi.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Offer>()
                 .HasMany(e => e.Contracts)
                 .WithRequired(e => e.Offer)

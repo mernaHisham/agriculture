@@ -14,9 +14,9 @@ namespace Agriculure.WebUi.Models
         {
             Users = new HashSet<User>();
         }
-
-        [StringLength(50)]
-        public string ID { get; set; }
+        
+        //[StringLength(50)]
+        public long RoleID { get; set; }
 
         [StringLength(50)]
         public string RoleName { get; set; }

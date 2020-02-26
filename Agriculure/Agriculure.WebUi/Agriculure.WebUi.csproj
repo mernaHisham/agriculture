@@ -128,14 +128,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLLs\AuthBLL.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Custom_Classes\RegisterationObject.cs" />
+    <Compile Include="Custom_Classes\StackHolderType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002261643011_initial.cs" />
+    <Compile Include="Migrations\202002261643011_initial.Designer.cs">
+      <DependentUpon>202002261643011_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Offer.cs" />
@@ -144,6 +153,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\FarmerVM.cs" />
+    <Compile Include="ViewModel\RoleVM.cs" />
+    <Compile Include="ViewModel\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Add-Offer.html" />
@@ -263,6 +274,7 @@
     <Content Include="Views\Offers\Details.cshtml" />
     <Content Include="Views\Offers\Edit.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,6 +294,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002261643011_initial.resx">
+      <DependentUpon>202002261643011_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
