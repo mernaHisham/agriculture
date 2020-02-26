@@ -19,24 +19,27 @@ namespace Agriculure.WebUi.Models
 
         public long ProductID { get; set; }
 
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
-        public long? offerowner { get; set; }
+        public long offerowner { get; set; }
 
+        [Required]
         [StringLength(4000)]
         public string Descreption { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string unit { get; set; }
 
-        public decimal? quntity { get; set; }
+        public decimal quntity { get; set; }
 
-        public decimal? price { get; set; }
+        public decimal price { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string currency { get; set; }
 
