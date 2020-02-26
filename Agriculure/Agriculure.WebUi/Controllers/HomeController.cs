@@ -96,8 +96,25 @@ namespace Agriculure.WebUi.Controllers
             //_dbContext.SaveChanges();
             return View("Index");
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Login(string Email,string Password) {
+        public ActionResult Login(string Email,string Password)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _dbContext.Users.Where(x => x.Email == Email && x.Password == Password).FirstOrDefault();
+                if (user != null)
+                    return RedirectToAction("Index", "Home");
+            }
+            
+            return View();
+
             var farmer = /*_dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerLiecnse == Password).Any()*/ true ;
             if(farmer == true)
             {

@@ -71,13 +71,13 @@
                             <a class="nav-link" href="/Home">Home</a>
                         </li>
                         <li class="nav-item main-hiddable-nav">
-                            <a class="nav-link" href="/Home">Login</a>
+                            <a class="nav-link" href="/Home/Login">Login</a>
                         </li>
                         <li class="nav-item main-hiddable-nav">
                             <a class="nav-link" href="/agriculture/Product-History.html">Product history</a>
                         </li>
                         <li class="nav-item main-hiddable-nav">
-                            <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", 1)">Account</a>
+                            <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", new { UserId = 1 })">Account</a>
                         </li>
                     </ul>
                 </div>

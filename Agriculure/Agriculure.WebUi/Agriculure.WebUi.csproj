@@ -140,9 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002261643011_initial.cs" />
-    <Compile Include="Migrations\202002261643011_initial.Designer.cs">
-      <DependentUpon>202002261643011_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202002261818191_initial.cs" />
+    <Compile Include="Migrations\202002261818191_initial.Designer.cs">
+      <DependentUpon>202002261818191_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -153,6 +153,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\FarmerVM.cs" />
+    <Compile Include="ViewModel\LoginTraceProductVM.cs" />
     <Compile Include="ViewModel\RoleVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
   </ItemGroup>
@@ -239,7 +240,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Farmers\Create.cshtml" />
     <Content Include="Views\Farmers\Delete.cshtml" />
     <Content Include="Views\Farmers\Details.cshtml" />
@@ -275,6 +275,8 @@
     <Content Include="Views\Offers\Edit.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,8 +298,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002261643011_initial.resx">
-      <DependentUpon>202002261643011_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002261818191_initial.resx">
+      <DependentUpon>202002261818191_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

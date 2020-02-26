@@ -13,7 +13,7 @@ namespace Agriculure.WebUi.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202002261643011_initial"; }
+            get { return "202002261818191_initial"; }
         }
         
         string IMigrationMetadata.Source
