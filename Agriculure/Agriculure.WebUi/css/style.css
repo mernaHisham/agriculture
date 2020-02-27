@@ -304,3 +304,29 @@ input.LblInput{
         font-weight: bold;
         font-size: 30px;
     }
+
+.HomeSection{
+    width:80% !important
+}
+    .HomeSection h2 {
+        color: black;
+        padding: 117px 20px 20px 20px;
+        font-weight: 800;
+    }
+    .HomeSection p {
+        font-weight: 600;
+        line-height: 1.8;
+        padding: 20px;
+    }
+.container.HomeSection:not(.nav-container)::after {
+    content: '';
+    position: initial;
+    width: 0;
+    height: 0;
+    right: 0;
+    background-color: #000;
+    border: 4px solid #000;
+    top: 0;
+    border-radius: 0;
+    z-index: 0;
+}
