@@ -1,6 +1,6 @@
 ﻿@using Agriculure.WebUi.Models
-@{ 
-    User currentUser = (Session["currentUser"] != null)? Session["currentUser"] as User: null;
+@{
+    User currentUser = (Session["currentUser"] != null) ? Session["currentUser"] as User : null;
 }
 <!DOCTYPE html>
 <html>
@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="/fonts\font-awesome-4.7.0\css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- <link rel="stylesheet" href="css/style2.css"> -->
+    <link rel="stylesheet" href="/css/style2.css">
     <link rel="icon" href="/imgs/imagesIcon.ico">
     <title>@ViewBag.Title - Agriculture</title>
 
-   <link rel="stylesheet" href="/css/hover.css">
-         <link rel="stylesheet" href="/css/animate.css">
-        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-               integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
@@ -31,7 +31,7 @@
             <div class="container nav-container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <nav class="navbar navbar-light bg-light">
-                        <a class="navbar-brand" href="/agriculture/Index.html">
+                        <a class="navbar-brand" href="/Home">
                             <img src="/imgs/images2.png" width="200" height="70" alt="">
                             <br />
                             <span class="ourWords">tranceparency . trust . trace</span>
@@ -49,7 +49,7 @@
                                 <a class="nav-link text-center" href="@Url.Action("Index", "Offers")">Add Offer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-center" href="#">Make Contract</a>
+                                <a class="nav-link text-center" href="@Url.Action("Index", "Contracts")">Make Contract</a>
                             </li>
 
                             <li class="nav-item nav-hiddable">
@@ -66,16 +66,20 @@
                                 }
                             </li>
                             <li class="nav-item nav-hiddable">
-                                <a class="nav-link text-center" href="#">Product history</a>
+                                <a class="nav-link text-center" href="/Products/ProductHistory">Product history</a>
                             </li>
-                            @if ((Session["currentUser"]) != null)
-                            {
-                                <li class="nav-item nav-hiddable">
+                            <li class="nav-item nav-hiddable">
+
+                                @if ((Session["currentUser"]) != null)
+                                {
 
                                     <a class="nav-link text-center" href="@Url.Action("Profile", "Home", new { UserId = currentUser.ID })">@currentUser.Name</a>
-                                </li>
-
-                            }
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-center" href="/Home/Register">Sign up</a>
+                                }
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -97,23 +101,30 @@
                             }
                         </li>
                         <li class="nav-item main-hiddable-nav">
-                            <a class="nav-link" href="~/Product-History.html">Product history</a>
+                            <a class="nav-link" href="/Products/ProductHistory">Product history</a>
                         </li>
-                        @if ((Session["currentUser"]) != null)
-                        {
-                            <li class="nav-item main-hiddable-nav">
+                        <li class="nav-item main-hiddable-nav">
 
+                            @if ((Session["currentUser"]) != null)
+                            {
                                 <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", new { UserId = currentUser.ID })">@currentUser.Name</a>
-                            </li>
 
-                        }
+                            }
+                            else
+                            {
+                                <a class="nav-link text-center" href="/Home/Register">Sign up</a>
+                            }
+                        </li>
+
                     </ul>
                 </div>
             </nav>
         </header>
-            @RenderBody()
-          
+        @RenderBody()
+
     </div>
+    <a href="/Products/Create" title="Add Product" class="addProd"><i class="fa fa-plus"></i></a>
+
     <footer>
         <section class="text-center">
             <div>
@@ -131,7 +142,7 @@
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/site.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/bootstrap")*@
 
     @RenderSection("scripts", required: false)
 </body>

@@ -290,3 +290,17 @@ input.LblInput{
 .form-group{
     margin-bottom: 30px;
 }
+
+.addProd {
+    position: fixed;
+    bottom: 67px;
+    right: 49px;
+    background: #7a9860;
+    padding: 20px;
+    border-radius: 25px;
+}
+    .addProd i {
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+    }

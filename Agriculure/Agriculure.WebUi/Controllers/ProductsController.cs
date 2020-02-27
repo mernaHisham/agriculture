@@ -128,5 +128,6 @@ namespace Agriculure.WebUi.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult ProductHistory() => View();
     }
 }
