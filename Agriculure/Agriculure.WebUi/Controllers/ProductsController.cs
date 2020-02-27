@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,7 +49,7 @@ namespace Agriculure.WebUi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product)
+        public ActionResult Create([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product,HttpPostedFileBase imageFile)
         {
             if(Session["currentUser"] == null)
             {
@@ -56,7 +57,15 @@ namespace Agriculure.WebUi.Controllers
             }
             if (ModelState.IsValid)
             {
-                product.UserID = (Session["currentUser"] as User).ID;
+                product.UserID = (Session["currentUser"] as User).ID;               
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                string path = Path.Combine(Server.MapPath("~/imgs"),
+                Path.GetFileName(imageFile.FileName));
+                imageFile.SaveAs(path);
+                product.image = imageFile.FileName;
+
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -69,10 +78,6 @@ namespace Agriculure.WebUi.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(long? id)
         {
-            if (Session["currentUser"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,10 +96,21 @@ namespace Agriculure.WebUi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product, HttpPostedFileBase imageFile)
         {
+            if (Session["currentUser"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    string path = Path.Combine(Server.MapPath("~/imgs"),
+                    Path.GetFileName(imageFile.FileName));
+                    imageFile.SaveAs(path);
+                    product.image = imageFile.FileName;
+                }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

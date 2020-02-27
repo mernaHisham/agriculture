@@ -56,12 +56,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.image)
+                <img src="~/imgs/@item.image" width="100" />
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
-                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-
                 <a href="@Url.Action("Delete","Products", new { id = item.ID })"
                    onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
                     Delete

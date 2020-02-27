@@ -11,7 +11,7 @@
         <h2 class="text-center">Add Product</h2>
         <div class="row">
 
-            @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12" }))
+            @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger text-uppercase", @style = "font-weight: bold;" })
@@ -31,17 +31,6 @@
                     @Html.TextBoxFor(z => z.Description, new { @class = "form-control", placeholder = "Address" })
                     @Html.ValidationMessageFor(z => z.Description, "", new { @class = "text-danger" })
                 </div>
-
-                @*<div class="form-group col-md-6 col-lg-6 col-12 pull-left">
-                    <label>
-                        User Type:
-                    </label>
-                    @Html.DropDownListFor(z => z.UserID,
-                        ViewBag.FarmerSID as SelectList,
-                        " Select a Stack Holder Type ",
-                        new { @class = "form-control", @style = "width:100%", @tabindex = "-1" })
-                    @Html.ValidationMessageFor(z => z.UserID, "The User Type field is required", new { @class = "text-danger", @style = "font-weight: bold;" })
-                </div>*@
                 <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                     <label>
                         Lisence:
@@ -53,8 +42,7 @@
                     <label>
                         image :
                     </label>
-                    @Html.TextBoxFor(z => z.image, new { @class = "form-control", placeholder = "Company Name" })
-                    @Html.ValidationMessageFor(z => z.image, "", new { @class = "text-danger", @style = "font-weight: bold;" })
+                    <input type="file" name="imageFile"/>
                 </div>
                 <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                     <label>
