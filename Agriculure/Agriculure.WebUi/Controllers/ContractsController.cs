@@ -52,6 +52,10 @@ namespace Agriculure.WebUi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,OfferID,Quantity,Price,buyerID,sellerID,requestDate,status,acceptDate")] Contract contract)
         {
+            if (Session["currentUser"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Contracts.Add(contract);
@@ -68,6 +72,10 @@ namespace Agriculure.WebUi.Controllers
         // GET: Contracts/Edit/5
         public ActionResult Edit(long? id)
         {
+            if (Session["currentUser"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

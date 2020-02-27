@@ -50,8 +50,13 @@ namespace Agriculure.WebUi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product)
         {
+            if(Session["currentUser"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
+                product.UserID = (Session["currentUser"] as User).ID;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,6 +69,10 @@ namespace Agriculure.WebUi.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(long? id)
         {
+            if (Session["currentUser"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
