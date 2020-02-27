@@ -115,7 +115,7 @@ namespace Agriculure.WebUi.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    return RedirectToAction("Home", "Login");
+                    return RedirectToAction("Login", "Home");
 
             }
             

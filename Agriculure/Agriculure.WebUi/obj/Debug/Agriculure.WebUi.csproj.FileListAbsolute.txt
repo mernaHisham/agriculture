@@ -73,7 +73,6 @@ D:\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.WebPages.Razor.xml
 D:\agriculture\Agriculure\Agriculure.WebUi\bin\Newtonsoft.Json.xml
 D:\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.pdb
 D:\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
