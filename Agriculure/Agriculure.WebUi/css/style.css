@@ -9,7 +9,7 @@ body{
     z-index: 999;
     background-color: rgba(247, 247, 247, 0.41);
     min-height:  123vh;
-    padding-bottom: 20px;
+    padding-bottom: 1px;
 }
 /* navbar */
 nav #navbarNav{
@@ -293,16 +293,17 @@ input.LblInput{
 
 .addProd {
     position: fixed;
-    bottom: 67px;
+    bottom: 40px;
     right: 49px;
-    background: #7a9860;
-    padding: 20px;
-    border-radius: 25px;
+    background: #F0F0F0;
+    padding: 14px 18px;
+    border-radius: 50px;
 }
     .addProd i {
-        color: white;
+        color: #7a9860;
         font-weight: bold;
         font-size: 30px;
+        margin: 4px 2px 0px 2px;
     }
 
 .HomeSection{
@@ -325,7 +326,7 @@ input.LblInput{
     height: 0;
     right: 0;
     background-color: #000;
-    border: 4px solid #000;
+    border: 0px solid #000;
     top: 0;
     border-radius: 0;
     z-index: 0;

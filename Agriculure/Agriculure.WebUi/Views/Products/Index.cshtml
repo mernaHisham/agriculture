@@ -4,14 +4,23 @@
     ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     #AddOfferForm {
         width: 90%;
     }
+
+    .contracts-container {
+        padding: 50px 0;
+        width: 85%;
+        margin: 5px auto;
+    }
+
+    .bodyContainer {
+        padding-bottom: 1px;
+    }
 </style>
 
-<section class="FormSection" id="AddOfferForm">
+@*<section class="FormSection" id="AddOfferForm">
     <div class="Registration">
 
 
@@ -42,33 +51,77 @@
 
             @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Liecnse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <img src="~/imgs/@item.image" width="100" />
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
-                <a href="@Url.Action("Delete","Products", new { id = item.ID })"
-                   onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                    Delete
-                </a>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Liecnse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <img src="~/imgs/@item.image" width="100" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        <a href="@Url.Action("Delete","Products", new { id = item.ID })"
+                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                            Delete
+                        </a>
 
 
-            </td>
-        </tr>
+                    </td>
+                </tr>
             }
 
         </table>
-</div></section>
+    </div>
+</section>*@
+
+
+
+<div class="contracts-container">
+
+    <div style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
+        <h2>Products: @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })</h2>
+    </div>
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card mb-4 o-hidden">
+                    <img alt="" class="card-img-top" src="~/imgs/@item.image">
+                    <div class="card-body">
+                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                        <p class="text-muted mt-3">
+                            @Html.DisplayFor(modelItem => item.Liecnse)
+                        </p>
+                        <p class="text-muted mt-3">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                        <div class="actions">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                            @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+
+                            <a href="@Url.Action("Delete","Products", new { id = item.ID })"
+                               onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

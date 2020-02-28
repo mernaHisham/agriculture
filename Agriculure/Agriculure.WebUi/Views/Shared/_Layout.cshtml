@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <link rel="stylesheet" href="/css/style2.css">
+    <link rel="stylesheet" href="/css/make-contract.css">
+
     <link rel="icon" href="/imgs/imagesIcon.ico">
     <title>@ViewBag.Title - Agriculture</title>
 
     <link rel="stylesheet" href="/css/hover.css">
     <link rel="stylesheet" href="/css/animate.css">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    @*<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">*@
 
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
@@ -46,29 +48,6 @@
                         <H1 class="headerTxt text-center">The future of <br /><span>Agriculture</span></H1>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-center" href="@Url.Action("Index", "Offers")">Add Offer</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="@Url.Action("Index", "Contracts")">Make Contract</a>
-                            </li>
-
-                            <li class="nav-item nav-hiddable">
-                                <a class="nav-link text-center" href="/Home">Home</a>
-                            </li>
-                            <li class="nav-item nav-hiddable">
-                                @if ((Session["currentUser"]) != null)
-                                {
-                                    <a class="nav-link text-center" href="@Url.Action("Logout", "Home")">log out</a>
-                                }
-                                else
-                                {
-                                    <a class="nav-link text-center" href="/Home/Login">Login</a>
-                                }
-                            </li>
-                            <li class="nav-item nav-hiddable">
-                                <a class="nav-link text-center" href="/Products/ProductHistory">Product history</a>
-                            </li>
-                            <li class="nav-item nav-hiddable">
 
                                 @if ((Session["currentUser"]) != null)
                                 {
@@ -80,6 +59,42 @@
                                     <a class="nav-link text-center" href="/Home/Register">Sign up</a>
                                 }
                             </li>
+                            <li class="nav-item">
+                                @if ((Session["currentUser"]) != null)
+                                {
+                                    <a class="nav-link text-center" href="@Url.Action("Logout", "Home")">log out</a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-center" href="/Home/Login">Login</a>
+                                }
+                            </li>
+                            <li class="nav-item nav-hiddable">
+                                <a class="nav-link text-center" href="/Home">Home</a>
+                            </li>
+
+                            @if ((Session["currentUser"]) != null)
+                            {
+                                <li class="nav-item nav-hiddable">
+                                    <a class="nav-link text-center" href="@Url.Action("Index", "Offers")">Offers</a>
+                                </li>
+                                <li class="nav-item nav-hiddable">
+                                    <a class="nav-link text-center" href="@Url.Action("Index", "Contracts")">Contracts</a>
+                                </li>
+                            }
+
+                            <li class="nav-item nav-hiddable">
+                                <a class="nav-link text-center" href="/Products/ProductHistory">Product history</a>
+                            </li>
+                            @if ((Session["currentUser"]) == null)
+                            {
+                                <li class="nav-item nav-hiddable">
+                                    <a class="nav-link text-center" href="/Home/Register">Sign up</a>
+                                </li>
+                                <li class="nav-item nav-hiddable">
+                                    <a class="nav-link text-center" href="/Home/Login">Login</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav>
@@ -87,35 +102,30 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light text-center bg-grey">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item main-hiddable-nav">
+                        <li class="nav-item main-hiddable-nav" style="border-left:2px solid gray;">
                             <a class="nav-link" href="/Home">Home</a>
                         </li>
-                        <li class="nav-item main-hiddable-nav">
-                            @if (Session["currentUser"] != null)
-                            {
-                                <a class="nav-link text-center" href="@Url.Action("Logout", "Home")">log out</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link text-center" href="/Home/Login">Login</a>
-                            }
-                        </li>
+                        @if ((Session["currentUser"]) != null)
+                        {
+                            <li class="nav-item main-hiddable-nav">
+                                <a class="nav-link text-center" href="@Url.Action("Index", "Offers")">Offers</a>
+                            </li>
+                            <li class="nav-item main-hiddable-nav">
+                                <a class="nav-link text-center" href="@Url.Action("Index", "Contracts")">Contracts</a>
+                            </li>
+                        }
                         <li class="nav-item main-hiddable-nav">
                             <a class="nav-link" href="/Products/ProductHistory">Product history</a>
                         </li>
-                        <li class="nav-item main-hiddable-nav">
-
-                            @if ((Session["currentUser"]) != null)
-                            {
-                                <a class="navbar-brand brand-logo" href="@Url.Action("Profile", "Home", new { UserId = currentUser.ID })"> @currentUser.Name</a>
-
-                            }
-                            else
-                            {
+                        @if ((Session["currentUser"]) == null)
+                        {
+                            <li class="nav-item main-hiddable-nav">
                                 <a class="nav-link text-center" href="/Home/Register">Sign up</a>
-                            }
-                        </li>
-
+                            </li>
+                            <li class="nav-item main-hiddable-nav">
+                                <a class="nav-link text-center" href="/Home/Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -123,7 +133,10 @@
         @RenderBody()
 
     </div>
-    <a href="/Products/Create" title="Add Product" class="addProd"><i class="fa fa-plus"></i></a>
+    @if ((Session["currentUser"]) != null)
+    {
+        <a href="/Products/Index" title="Add Product" class="addProd"><i class="fa fa-plus"></i></a>
+    }
 
     <footer>
         <section class="text-center">

@@ -9,15 +9,25 @@
     #AddOfferForm {
         width: 90%;
     }
+
+    .contracts-container {
+        padding: 50px 0;
+        width: 85%;
+        margin: 5px auto;
+    }
+
+    .bodyContainer {
+        padding-bottom: 1px;
+    }
 </style>
 
-<section class="FormSection" id="AddOfferForm">
+@*<section class="FormSection" id="AddOfferForm">
     <div class="Registration">
 
 
         <h2>Contracts : </h2>
         <p>
-            @Html.ActionLink("Create New", "Create",null, new { @class="btn btn-primary" })
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
         </p>
         <table class="table">
             <tr>
@@ -77,8 +87,6 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
-                        @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-                        @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
                         <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
                            onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
                             Delete
@@ -88,4 +96,50 @@
             }
 
         </table>
-</div></section>
+    </div>
+</section>*@
+
+
+<div class="contracts-container">
+
+    <div style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
+        <h2>Contracts: @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })</h2>
+    </div>
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card mb-4 o-hidden">
+                    @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                    <div class="card-body">
+                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
+                        <p class="m-0 text-small text-muted"><small>seller: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                        <p class="m-0 text-small text-muted"><small>buyer: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                        <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
+                        <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
+                        <p class="m-0">from: @Html.DisplayFor(modelItem => item.requestDate)</p>
+                        <p class="m-0">to: @Html.DisplayFor(modelItem => item.acceptDate)</p>
+
+                        <p class="text-muted mt-3">
+                            @Html.DisplayFor(modelItem => item.status)
+                        </p>
+                       
+                        <div class="actions">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+                            <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                               onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

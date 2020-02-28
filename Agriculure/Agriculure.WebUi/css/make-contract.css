@@ -18,9 +18,10 @@ nav #navbarNav{
 }
 
 
-
-.contracts-container{
+.contracts-container {
     padding: 50px 0;
+    width: 90%;
+    margin: 5px auto;
 }
 .contracts-container .card-body h5{
     color: #76945e;
@@ -29,6 +30,7 @@ nav #navbarNav{
     overflow: hidden;
 }
 .card {
+    max-height: 280px;
     border-radius: 10px;
     box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
     border: 0;
