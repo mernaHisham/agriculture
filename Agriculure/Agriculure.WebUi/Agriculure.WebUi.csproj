@@ -278,6 +278,11 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\ProductHistory.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\EmailSent.cshtml" />
+    <Content Include="Views\Contracts\UserContracts.cshtml" />
+    <Content Include="Views\Offers\UserOffers.cshtml" />
+    <Content Include="Views\Products\UserProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

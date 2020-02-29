@@ -102,8 +102,12 @@
 
 <div class="contracts-container">
 
-    <div style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
-        <h2>Contracts: @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })</h2>
+    <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
+        <h2 class="col-9">Contracts: </h2>
+        <div class="col-3 pt-1">
+            @Html.ActionLink("New Contract", "Create", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("My Contracts", "UserContracts", null, new { @class = "btn btn-primary" })
+        </div>
     </div>
 
     <div class="row">
@@ -123,18 +127,18 @@
                         <p class="m-0">from: @Html.DisplayFor(modelItem => item.requestDate)</p>
                         <p class="m-0">to: @Html.DisplayFor(modelItem => item.acceptDate)</p>
 
-                        <p class="text-muted mt-3">
+                        @*<p class="text-muted mt-3">
                             @Html.DisplayFor(modelItem => item.status)
-                        </p>
+                        </p>*@
                        
-                        <div class="actions">
+                        @*<div class="actions">
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 
                             <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
                                onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
                                 Delete
                             </a>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

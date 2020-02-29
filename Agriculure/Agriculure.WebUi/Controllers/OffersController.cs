@@ -17,8 +17,15 @@ namespace Agriculure.WebUi.Controllers
         // GET: Offers
         public ActionResult Index()
         {
-            var offers = db.Offers.Include(o => o.Product).Include(o => o.User);
+            User user = (User)Session["currentUser"];
+            var offers = db.Offers.Where(x => x.User.ID != user.ID);
             return View(offers.ToList());
+        }
+        public ActionResult UserOffers()
+        {
+            User user = (User)Session["currentUser"];
+            var Offers = db.Offers.Where(x => x.User.ID == user.ID);
+            return View(Offers.ToList());
         }
 
         // GET: Offers/Details/5

@@ -17,7 +17,14 @@ namespace Agriculure.WebUi.Controllers
         // GET: Contracts
         public ActionResult Index()
         {
-            var contracts = db.Contracts.Include(c => c.Offer).Include(c => c.User).Include(c => c.User1);
+            var contracts = db.Contracts;
+            return View(contracts.ToList());
+        }
+
+        public ActionResult UserContracts()
+        {
+            User user = (User)Session["currentUser"];
+            var contracts = db.Contracts.Where(x => x.User.ID == user.ID || x.User1.ID == user.ID);
             return View(contracts.ToList());
         }
 

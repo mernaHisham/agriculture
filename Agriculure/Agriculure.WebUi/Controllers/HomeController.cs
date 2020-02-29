@@ -5,6 +5,7 @@ using Agriculure.WebUi.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -142,6 +143,66 @@ namespace Agriculure.WebUi.Controllers
             Session["currentUser"] = null;
             return RedirectToAction("Index");
         }
+        
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ForgotPassword(string Email)
+        {
+            var user = _dbContext.Users.Where(x => x.Email == Email).FirstOrDefault();
+            if(user != null)
+            {
+                int result = SendForgetPasswordMail(user.Email);
+                if(result == 0)
+                {
+                    user.Password = "1456";
+                    _dbContext.SaveChanges();
+                    return RedirectToAction("EmailSent");
+                }
 
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult EmailSent()
+        {
+            return View();
+        }
+
+        public int SendForgetPasswordMail(string ToEmail)
+        {
+            try
+            {
+                SmtpClient smtpClient = new SmtpClient("dc-b34e10b12d8e.rpaegypt.com", 587);
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("alisakralaraby@gmail.com");
+                message.Body = "Use This Password Temporarly, we recommend you to change it. /n 1456";
+                message.To.Add(ToEmail);
+
+                message.Subject = "Temporary Password";
+                smtpClient.UseDefaultCredentials = true;
+                smtpClient.EnableSsl = false;
+
+                //message.Attachments.Add(new Attachment(filePath));
+
+
+                smtpClient.Credentials = new System.Net.NetworkCredential("bookup@rpaegypt.com", "P@ssw0rd");
+                smtpClient.Timeout = 15 * 60 * 1000;
+                smtpClient.Send(message);
+
+                message = null;
+                return 0;
+            }
+            catch (Exception x)
+            {
+                return -1;
+            }
+        }
     }
 }

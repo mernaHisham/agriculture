@@ -1,0 +1,89 @@
+﻿@model Agriculure.WebUi.ViewModel.LoginTraceProductVM
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/fonts\font-awesome-4.7.0\css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- <link rel="stylesheet" href="css/style2.css"> -->
+    <link rel="icon" href="/imgs/imagesIcon.ico">
+
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    @*<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">*@
+
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <style>
+        .bodyContainer {
+            min-height: 93vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bodyContainer">
+        <header class="bg-light">
+            <div class="container nav-container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar navbar-light bg-light">
+                        <a class="navbar-brand" href="/Home">
+                            <img src="/imgs/images2.png" width="200" height="70" alt="">
+                            <br />
+                            <span class="ourWords">tranceparency . trust . trace</span>
+                        </a>
+                    </nav>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <H1 class="headerTxt text-center">The future of <br /><span>Agriculture</span></H1>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="FormSection" id="AddOfferForm" style="width:50%">
+            <div class="row mx-0" style="width:100%">
+                <div class="col-12">
+
+                    <p class="text-center">An Email is Sent, Check Your Inbox</p>
+                    <div class="form-group col-12 text-center">
+                        <a href="@Url.Action("Login", "Home")" style="margin-top:-15px">Back To Login</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <footer>
+        <section class="text-center">
+            <div>
+                <p class="text-center">
+                    CopyRight &copy; 2020, all rights reserved <span>MasriTech</span>
+                </p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/site.js"></script>
+
+</body>
+
+</html>
+

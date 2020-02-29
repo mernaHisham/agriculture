@@ -1,34 +1,40 @@
-﻿@model IEnumerable<Agriculure.WebUi.Models.Offer>
+﻿@model IEnumerable<Agriculure.WebUi.Models.Product>
 
 @{
-    ViewBag.Title = "Offers";
+    ViewBag.Title = "My Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     #AddOfferForm {
         width: 90%;
     }
+
     .contracts-container {
         padding: 50px 0;
         width: 85%;
         margin: 5px auto;
     }
+
     .bodyContainer {
         padding-bottom: 1px;
     }
-    .card{
-        max-height:350px;
+
+    .card-img-top-div {
+        width: 100%;
+        height: 180px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
     }
 </style>
 
 <div class="contracts-container">
 
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
-        <h2 class="col-9">Offers: </h2>
+        <h2 class="col-9">My Products: </h2>
         <div class="col-3 pt-1">
             @Html.ActionLink("New Offer", "Create", null, new { @class = "btn btn-primary" })
-            @Html.ActionLink("My Offers", "UserOffers", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 
@@ -38,33 +44,25 @@
         {
 
             <div class="col-md-6 col-lg-3">
-                <div class="card mb-4 o-hidden">
-                    @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                <div class="card mb-4 o-hidden" style="height: 380px; max-height:unset">
+                    <div class="card-img-top-div" style="background-image:url(/imgs/@item.image)"></div>
                     <div class="card-body">
-                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Product.Name)</h5>
+                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Name)</h5>
                         <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
-                        <p class="m-0">@Html.DisplayFor(modelItem => item.quntity) units</p>
-                        <p class="m-0">@(item.price - 5) per unit <del><small>@Html.DisplayFor(modelItem => item.price)</small></del></p>
-                        <p class="m-0">from: @Html.DisplayFor(modelItem => item.StartDate)</p>
-                        <p class="m-0">to: @Html.DisplayFor(modelItem => item.EndDate)</p>
-                        @*<p class="m-0">to: @Html.DisplayFor(modelItem => item.Status)</p>*@
-
                         <p class="text-muted mt-3">
-                            @Html.DisplayFor(modelItem => item.currency)
+                            @Html.DisplayFor(modelItem => item.Liecnse)
                         </p>
-
                         <p class="text-muted mt-3">
-                            @Html.DisplayFor(modelItem => item.Descreption)
+                            @Html.DisplayFor(modelItem => item.Description)
                         </p>
-
                         <div class="actions">
-                            @Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
                             @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
 
-                            @*<a href="@Url.Action("Delete","Offers", new { id = item.ID })"
+                            <a href="@Url.Action("Delete","Products", new { id = item.ID })"
                                onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
                                 Delete
-                            </a>*@
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -73,5 +71,4 @@
         }
     </div>
 </div>
-
 

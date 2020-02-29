@@ -18,7 +18,15 @@ namespace Agriculure.WebUi.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.User);
+            User user = (User)Session["currentUser"];
+            var products = db.Products.Where(x => x.UserID != user.ID);
+            return View(products.ToList());
+        }
+
+        public ActionResult UserProducts()
+        {
+            User user = (User)Session["currentUser"];
+            var products = db.Products.Where(x => x.User.ID == user.ID);
             return View(products.ToList());
         }
 
