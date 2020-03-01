@@ -58,12 +58,17 @@
                         </p>
 
                         <div class="actions">
-                            @Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })
+                            @*@Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })*@
                             @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                           
+                            <button onclick="RequestContract(this, @item.ID)" 
+                                    class="btn btn-primary btn-icon-text" aria-label="Left Align">
+                                Request
+                            </button>
 
-                            @*<a href="@Url.Action("Delete","Offers", new { id = item.ID })"
-                               onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                Delete
+                            @*<a href="@Url.Action("RequestContract","Offers", new { id = item.ID })"
+                               onclick="RequestContract()" class="btn btn-primary btn-icon-text" aria-label="Left Align">
+                                Request
                             </a>*@
                         </div>
                     </div>
@@ -73,5 +78,40 @@
         }
     </div>
 </div>
+
+<script>
+
+    function RequestContract(obj, id) {
+        debugger
+        console.log(id)
+        //var xx = confirm('Dialogue');
+
+        var confirmed = confirm('are you sure to Request Contract ?!');
+        if (confirmed) {
+            $(obj).prop('disabled', true);
+            $(obj).text("Requested");
+
+            var ajaxCallData = {
+            "id": id
+            }
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("RequestContract", "Offers")",
+                data: ajaxCallData,
+                dataType: "html",
+                success: function (result) {
+                    console.log("success")
+                    //DeletedSuccessfully();
+                },
+                error: function (x, status, error) {
+                    console.log(x)
+                    console.log(status)
+                    console.log(error)
+                }
+            })
+        }
+    }
+
+</script>
 
 

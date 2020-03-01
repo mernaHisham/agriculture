@@ -17,15 +17,32 @@ namespace Agriculure.WebUi.Controllers
         // GET: Contracts
         public ActionResult Index()
         {
-            var contracts = db.Contracts;
-            return View(contracts.ToList());
+            User user = (User)Session["currentUser"];
+            //shows pending contracts (that waits for acceptance or rejection) as a seller
+            var contracts = db.Contracts.Where(x => x.status == null && x.sellerID == user.ID).ToList();
+            return View(contracts);
         }
 
         public ActionResult UserContracts()
         {
             User user = (User)Session["currentUser"];
-            var contracts = db.Contracts.Where(x => x.User.ID == user.ID || x.User1.ID == user.ID);
-            return View(contracts.ToList());
+            //shows contracts (that are accepted) as a BUYER
+            var AcceptedBUYERcontracts = db.Contracts.Where(x => x.buyerID == user.ID && x.status == true);
+
+            //shows pending contracts (that waits for acceptance or rejection) as a BUYER
+            var PendingBuyercontracts = db.Contracts.Where(x => x.buyerID == user.ID && x.status == null).ToList();
+
+            //shows contracts (that are rejected) as a BUYER
+            var rejectedBUYERContracts = db.Contracts.Where(x => x.buyerID == user.ID && x.status == false).ToList();
+
+            //shows contracts (that are accepted) as a BUYER
+            var AcceptedSellerContracts = db.Contracts.Where(x => x.sellerID == user.ID && x.status == true).ToList();
+
+            ViewBag.PendingBuyercontracts = PendingBuyercontracts;
+            ViewBag.rejectedBUYERContracts = rejectedBUYERContracts;
+            ViewBag.AcceptedSellerContracts = AcceptedSellerContracts;
+
+            return View(AcceptedBUYERcontracts.ToList());
         }
 
         // GET: Contracts/Details/5
@@ -150,6 +167,29 @@ namespace Agriculure.WebUi.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Accept(long id)
+        {
+            var contract = db.Contracts.Where(x => x.ID == id).FirstOrDefault();
+            if (contract != null)
+            {
+                contract.status = true;
+                contract.acceptDate = DateTime.Now;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+        
+        public ActionResult Reject(long id)
+        {
+            var contract = db.Contracts.Where(x => x.ID == id).FirstOrDefault();
+            if (contract != null)
+                contract.status = false;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

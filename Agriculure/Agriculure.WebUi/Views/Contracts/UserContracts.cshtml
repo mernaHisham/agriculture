@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "My Contracts";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var rej_buyer = ViewBag.rejectedBUYERContracts as IEnumerable<Agriculure.WebUi.Models.Contract>;
+    var pend_buyer = ViewBag.PendingBuyercontracts as IEnumerable<Agriculure.WebUi.Models.Contract>;
+    var acc_seller = ViewBag.AcceptedSellerContracts as IEnumerable<Agriculure.WebUi.Models.Contract>;
 }
 
 <style>
@@ -103,47 +107,197 @@
 <div class="contracts-container">
 
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
-        <h2 class="col-9">Contracts: </h2>
-        <div class="col-3 pt-1">
-            @Html.ActionLink("New Contract", "Create", null, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
-        </div>
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="acc-buyer-tab" data-toggle="pill" href="#acc-buyer" role="tab" aria-controls="acc-buyer" aria-selected="true">
+                    Accepted (As Buyer) <span class="badge badge-pill badge-light px-2 py-1">@Model.Count()</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="rej-buyer-tab" data-toggle="pill" href="#rej-buyer" role="tab"
+                   aria-controls="rej-buyer" aria-selected="false">
+                    Rejected (As Buyer) <span class="badge badge-pill badge-light px-2 py-1">@rej_buyer.Count() </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pend-buyer-tab" data-toggle="pill" href="#pend-buyer"
+                   role="tab" aria-controls="pend-buyer" aria-selected="false">
+                    Pending (As Buyer) <span class="badge badge-pill badge-light px-2 py-1">@pend_buyer.Count() </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="acc-seller-tab" data-toggle="pill" href="#acc-seller"
+                   role="tab" aria-controls="acc-seller" aria-selected="false">
+                    Accepted (As Seller) <span class="badge badge-pill badge-light px-2 py-1">@acc_seller.Count() </span>
+                </a>
+            </li>
+        </ul>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
     </div>
+    
 
-    <div class="row">
+    <div class="tab-content" id="pills-tabContent">
 
-        @foreach (var item in Model)
-        {
+        <div class="tab-pane fade show active" id="acc-buyer" role="tabpanel" aria-labelledby="acc-buyer-tab">
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card mb-4 o-hidden">
-                    @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
-                    <div class="card-body">
-                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
-                        <p class="m-0 text-small text-muted"><small>seller: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
-                        <p class="m-0 text-small text-muted"><small>buyer: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
-                        <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
-                        <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
-                        <p class="m-0">from: @Html.DisplayFor(modelItem => item.requestDate)</p>
-                        <p class="m-0">to: @Html.DisplayFor(modelItem => item.acceptDate)</p>
+            <div class="row">
 
-                        @*<p class="text-muted mt-3">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-4 o-hidden">
+                            @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                            <div class="card-body">
+                                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
+                                <p class="m-0 text-small text-muted"><small>Buyer: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                                <p class="m-0 text-small text-muted"><small>Seller: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
+                                <p class="m-0">Requested at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.requestDate))</p>
+                                <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
+
+                                @*<p class="text-muted mt-3">
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </p>*@
+
+                                @*<div class="actions">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+                                    <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                       onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                        Delete
+                                    </a>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="rej-buyer" role="tabpanel" aria-labelledby="rej-buyer-tab">
+
+            <div class="row">
+
+                @foreach (var item in ViewBag.rejectedBUYERContracts as IEnumerable<Agriculure.WebUi.Models.Contract>)
+                {
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-4 o-hidden">
+                            @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                            <div class="card-body">
+                                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
+                                <p class="m-0 text-small text-muted"><small>Buyer: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                                <p class="m-0 text-small text-muted"><small>Seller: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
+                                <p class="m-0">Requested at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.requestDate))</p>
+                                <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
+                                @*<p class="text-muted mt-3">
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </p>*@
+
+                                <div class="actions">
+
+                                    <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                       onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="pend-buyer" role="tabpanel" aria-labelledby="pend-buyer-tab">
+
+            <div class="row">
+
+                @foreach (var item in ViewBag.PendingBuyercontracts as IEnumerable<Agriculure.WebUi.Models.Contract>)
+                {
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-4 o-hidden">
+                            @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                            <div class="card-body">
+                                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
+                                <p class="m-0 text-small text-muted"><small>Buyer: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                                <p class="m-0 text-small text-muted"><small>Seller: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
+                                <p class="m-0">Requested at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.requestDate))</p>
+                                <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
+
+                                @*<p class="text-muted mt-3">
                                 @Html.DisplayFor(modelItem => item.status)
                             </p>*@
 
-                        <div class="actions">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                                @*<div class="actions">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 
-                            <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                               onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                Delete
-                            </a>
+                                <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                   onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                    Delete
+                                </a>
+                            </div>*@
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                }
             </div>
 
-        }
+        </div>
+
+        <div class="tab-pane fade" id="acc-seller" role="tabpanel" aria-labelledby="acc-seller-tab">
+
+            <div class="row">
+
+                @foreach (var item in ViewBag.AcceptedSellerContracts as IEnumerable<Agriculure.WebUi.Models.Contract>)
+                {
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-4 o-hidden">
+                            @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                            <div class="card-body">
+                                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
+                                <p class="m-0 text-small text-muted"><small>Buyre: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                                <p class="m-0 text-small text-muted"><small>Seller: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
+                                <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
+                                <p class="m-0">Requested at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.requestDate))</p>
+                                <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
+
+                                @*<p class="text-muted mt-3">
+                                @Html.DisplayFor(modelItem => item.status)
+                            </p>*@
+
+                                @*<div class="actions">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+                                <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                   onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                    Delete
+                                </a>
+                            </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+
     </div>
+
+
 </div>
 

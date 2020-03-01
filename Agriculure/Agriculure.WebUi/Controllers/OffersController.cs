@@ -18,8 +18,10 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult Index()
         {
             User user = (User)Session["currentUser"];
-            var offers = db.Offers.Where(x => x.User.ID != user.ID);
-            return View(offers.ToList());
+            var userOffersFromContracts = db.Contracts.Where(x => x.buyerID == user.ID || x.sellerID == user.ID).Select(x => x.OfferID).ToList();
+
+            var offers = db.Offers.Where(x => x.User.ID != user.ID && !userOffersFromContracts.Any(r => x.ID == r)).ToList();
+            return View(offers);
         }
         public ActionResult UserOffers()
         {
@@ -136,6 +138,31 @@ namespace Agriculure.WebUi.Controllers
             Offer offer = db.Offers.Find(id);
             db.Offers.Remove(offer);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult RequestContract(long id)
+        {
+            Offer offer = db.Offers.Find(id);
+
+            User user = (User)Session["currentUser"];
+
+            var contract = new Contract
+            {
+                OfferID = offer.ID,
+                Price = Convert.ToDouble(offer.price),
+                Quantity = Convert.ToInt32(offer.quntity),
+                requestDate = DateTime.Now,
+                buyerID = user.ID,
+                sellerID = offer.User.ID,
+                status = null,
+                acceptDate = null
+            };
+
+            db.Contracts.Add(contract);
+            db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

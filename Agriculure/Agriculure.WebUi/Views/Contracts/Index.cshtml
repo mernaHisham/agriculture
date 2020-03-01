@@ -103,9 +103,9 @@
 <div class="contracts-container">
 
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
-        <h2 class="col-9">Contracts: </h2>
+        <h2 class="col-9">Incoming Contract Requests: </h2>
         <div class="col-3 pt-1">
-            @Html.ActionLink("New Contract", "Create", null, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("New Contract", "Create", null, new { @class = "btn btn-primary" })*@
             @Html.ActionLink("My Contracts", "UserContracts", null, new { @class = "btn btn-primary" })
         </div>
     </div>
@@ -114,23 +114,31 @@
 
         @foreach (var item in Model)
         {
-
             <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 o-hidden">
                     @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
                     <div class="card-body">
                         <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
-                        <p class="m-0 text-small text-muted"><small>seller: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
-                        <p class="m-0 text-small text-muted"><small>buyer: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                        <p class="m-0 text-small text-muted"><small>buyer: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
+                        <p class="m-0 text-small text-muted"><small>seller: @Html.DisplayFor(modelItem => item.User.Name)</small></p>
                         <p class="m-0">@Html.DisplayFor(modelItem => item.Quantity) units</p>
                         <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
                         <p class="m-0">from: @Html.DisplayFor(modelItem => item.requestDate)</p>
                         <p class="m-0">to: @Html.DisplayFor(modelItem => item.acceptDate)</p>
 
                         @*<p class="text-muted mt-3">
-                            @Html.DisplayFor(modelItem => item.status)
-                        </p>*@
-                       
+            @Html.DisplayFor(modelItem => item.status)
+        </p>*@
+
+                        <div class="actions">
+                            @Html.ActionLink("Accept", "Accept", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+                            <a href="@Url.Action("Reject","Contracts", new { id = item.ID })"
+                               onclick="return confirm('are you sure to Reject Contract ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                Reject
+                            </a>
+                        </div>
+
                         @*<div class="actions">
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 

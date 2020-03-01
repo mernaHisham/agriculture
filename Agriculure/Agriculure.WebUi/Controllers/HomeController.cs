@@ -115,11 +115,8 @@ namespace Agriculure.WebUi.Controllers
                     Session["currentUser"] = user;
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                    return RedirectToAction("Login", "Home");
-
             }
-            
+            ViewBag.ErrorMsg = "Email or Password is Incorrect";
             return View();
 
             var farmer = /*_dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerLiecnse == Password).Any()*/ true ;
