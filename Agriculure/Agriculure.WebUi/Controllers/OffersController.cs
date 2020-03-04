@@ -48,8 +48,12 @@ namespace Agriculure.WebUi.Controllers
         // GET: Offers/Create
         public ActionResult Create()
         {
+            var loggedUser = (User)Session["currentUser"];
             ViewBag.ProductID = new SelectList(db.Products, "ID", "Name");
-            ViewBag.offerowner = new SelectList(db.Users, "ID", "Name");
+            ViewBag.offerowner = loggedUser.ID;
+            ViewBag.Name = loggedUser.Name;
+
+            ViewBag.offerowner = new SelectList(db.Users, "ID", "Name", loggedUser.ID);
             return View();
         }
 
@@ -60,16 +64,24 @@ namespace Agriculure.WebUi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ProductID,StartDate,EndDate,Status,offerowner,Descreption,unit,quntity,price,currency")] Offer offer)
         {
+            var user = (User) Session["currentUser"];
             if (Session["currentUser"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
-            if (ModelState.IsValid)
+            offer.offerowner = user.ID;
+            db.Offers.Add(offer);
+            try
             {
-                db.Offers.Add(offer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
+            catch (Exception)
+            {
+                
+            }
+            
 
             ViewBag.ProductID = new SelectList(db.Products, "ID", "Name", offer.ProductID);
             ViewBag.offerowner = new SelectList(db.Users, "ID", "Name", offer.offerowner);

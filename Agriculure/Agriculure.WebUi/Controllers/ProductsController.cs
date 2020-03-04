@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Agriculure.WebUi.Custom_Classes;
 using Agriculure.WebUi.Models;
 
 namespace Agriculure.WebUi.Controllers
@@ -68,11 +69,11 @@ namespace Agriculure.WebUi.Controllers
                 product.UserID = (Session["currentUser"] as User).ID;               
                 if (imageFile != null && imageFile.ContentLength > 0)
                 {
-                string path = Path.Combine(Server.MapPath("~/imgs"),
-                Path.GetFileName(imageFile.FileName));
-                imageFile.SaveAs(path);
-                product.image = imageFile.FileName;
-
+                    string path = Path.Combine(Server.MapPath("~/imgs"),
+                    Path.GetFileName(imageFile.FileName));
+                    imageFile.SaveAs(path);
+                    product.image = imageFile.FileName;
+                    product.CreationDate = DateTime.Now;
                 }
                 db.Products.Add(product);
                 db.SaveChanges();
@@ -161,6 +162,92 @@ namespace Agriculure.WebUi.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult ProductHistory() => View();
+
+        [HttpGet]
+        public ActionResult ProductHistory()
+        {
+            var user = (User)Session["currentUser"];
+            if (user == null)
+                return RedirectToAction("Login", "Home");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ProdDetails(long ID)
+        {
+            var product = db.Products.Where(x => x.ID == ID).FirstOrDefault();
+
+            return PartialView(product);
+        }
+
+
+        [HttpGet]
+        public ActionResult ProdHistory(long ID)
+        {
+            var user = (User)Session["currentUser"];
+            var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            List<ICollection<Contract>> prodContracts = new List<ICollection<Contract>>();
+            List<ProductDetails> productDetails = new List<ProductDetails>();
+            
+            if (product != null)
+            {
+                var prodOffers = db.Offers.Where(x => x.ProductID == product.ID).ToList();
+                foreach (var item in prodOffers)
+                {
+                    prodContracts.Add(item.Contracts);
+                    productDetails.Add(new ProductDetails
+                    {
+                        Description = item.Descreption,
+                        ActionDate = item.StartDate,
+                        UserName1 = item.User.Name, 
+                        ActionType = "Offer On This Product"
+                    });
+                }
+                foreach (var item in prodContracts)
+                {
+                    foreach (var res in item)
+                    {
+                        productDetails.Add(new ProductDetails
+                        {
+                            ActionDate = Convert.ToDateTime(res.acceptDate),
+                            ActionType = "Contract On This Contract",
+                            UserName1 = res.User1.Name,
+                            UserName2 = res.User.Name
+                        });
+                    }
+                }
+
+                productDetails.Add(new ProductDetails
+                {
+                    Description = product.Description,
+                    ActionType = "Product Created",
+                    UserName1 = product.User.Name,
+                    ActionDate = product.CreationDate
+                });
+                productDetails.OrderByDescending(x => x.ActionDate);
+            }
+            
+            return PartialView(productDetails);
+        }
+
+
+        public ActionResult gggggg(long ID)
+        {
+            var data = new { status = "ok", result = "Ok" };
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult ProductHistory(long ID)
+        {
+            var user = (User)Session["currentUser"];
+            var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            if (product != null)
+            {
+
+            }
+
+            return PartialView();
+        }
     }
 }

@@ -1,0 +1,89 @@
+﻿@model List<Agriculure.WebUi.Custom_Classes.ProductDetails>
+
+@{ 
+    var counter = 0;
+}
+<div class="timeline">
+
+    @foreach (var item in Model)
+    {
+        counter++;
+
+        if (counter % 2 == 0)
+        {
+            <div class="container left">
+                <div class="content">
+                    <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
+                    <p class="mb-0">
+                        <small>@item.ActionType</small>
+                    </p>
+                    @if (item.ActionType.Contains("Contract"))
+                    {
+                        <p class="mb-0">
+                            buyer <small>@item.UserName1</small>
+                        </p>
+                        <p>
+                            Seller <small>@item.UserName2</small>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            By <small>@item.UserName1</small>
+                        </p>
+                    }
+                    <p>
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container right">
+                <div class="content">
+                    <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
+                    <p class="mb-0">
+                        <small>@item.ActionType</small>
+                    </p>
+                    @if (item.ActionType.Contains("Contract"))
+                    {
+                        <p class="mb-0">
+                            buyer <small>@item.UserName1</small>
+                        </p>
+                        <p>
+                            Seller <small>@item.UserName2</small>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            By <small>@item.UserName1</small>
+                        </p>
+                    }
+                    <p>
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        }
+    }
+
+    @*<div class="container left">
+        <div class="content">
+            <h2>2020</h2>
+            <p>
+                Here is your product.
+            </p>
+        </div>
+    </div>
+    <div class="container right">
+        <div class="content">
+            <h2>2020</h2>
+            <p>
+                ABCD distributed it to Altamimi through refrigerated cars within 2 days.
+            </p>
+        </div>
+    </div>*@
+</div>
+

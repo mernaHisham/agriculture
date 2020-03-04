@@ -6,59 +6,66 @@
 
 <!-- Start product history Part -->
 
-<div class="timeline-header row align-content-center">
-    <h2>Product History</h2>
-    <p>12873838979</p>
+<div class="timeline-header row py-2 align-content-center">
+    <h2 class="py-1">Product History</h2>
+    <div class="row py-1 justify-content-center" style="width: 100%">
+        <div class="col-6">
+            <input class="form-control" type="text" id="product_id" placeholder="Enter Product Id" />
+            <span class="text-danger font-weight-bold" id="erorr" style="visibility: hidden">enter a valid product id</span>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" id="trace_btn">Trace</button>
+        </div>
+    </div>
+    <div id="prod_details" class="row justify-content-center" style="width: 100%">
+
+    </div>
+    @*<p class="text-xl-center text-success" ></p>*@
+</div>
+<div id="container">
+
 </div>
 
-<div class="timeline">
-    <div class="container left">
-        <div class="content">
-            <h2>2020</h2>
-            <p>
-                Here is your product.
-            </p>
-        </div>
-    </div>
-    <div class="container right">
-        <div class="content">
-            <h2>2020</h2>
-            <p>
-                ABCD distributed it to Altamimi through refrigerated cars within 2 days.
-            </p>
-        </div>
-    </div>
-    <div class="container left">
-        <div class="content">
-            <h2>2020</h2>
-            <p>
-                Nada Producer Took 30kg.
-            </p>
-        </div>
-    </div>
-    <div class="container right">
-        <div class="content">
-            <h2>2020</h2>
-            <p>
-                Farmer Aseel Planted the Seeds in Alhasa on 12/5/2019
-                and Harvested on 20/8/2019 and used ABCD Pesticides.
-            </p>
-        </div>
-    </div>
-    <div class="container left">
-        <div class="content">
-            <h2>2011</h2>
-            <p>
-                Olive Seeds from Jof Supplier from Aljof.
-            </p>
-        </div>
-    </div>
-    <!-- <div class="container right">
-      <div class="content">
-        <h2>2007</h2>
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-      </div>
-    </div> -->
-</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script>
+    $("#trace_btn").click(function () {
+        
+        var id = $("#product_id").val();
+        if (id === "" || id === undefined) {
+            $("#erorr").css("visibility", "visible");
+        } else {
+            $("#erorr").css("visibility", "hidden");
+            $.ajax({
+                type: 'GET',
+                url: "/Products/ProdDetails/" + id,
+                contentType: "application/json;",
+                datatype: 'json',
+                success: function (data) {
+                    $('#prod_details').html(data);
+
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
+            })
+            $.ajax({
+                type: 'GET',
+                url: "/Products/ProdHistory/" + id,
+                contentType: "application/json;",
+                datatype: 'json',
+                success: function (data) {
+                    $('#container').html(data);
+                
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
+            })
+        }
+
+    })
+</script>
 
 <!-- End product history Part -->

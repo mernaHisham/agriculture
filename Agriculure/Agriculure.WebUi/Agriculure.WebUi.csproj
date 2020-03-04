@@ -135,14 +135,16 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Custom_Classes\PasswordEncryptor.cs" />
+    <Compile Include="Custom_Classes\ProductDetails.cs" />
     <Compile Include="Custom_Classes\RegisterationObject.cs" />
     <Compile Include="Custom_Classes\StackHolderType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002262246517_mm.cs" />
-    <Compile Include="Migrations\202002262246517_mm.Designer.cs">
-      <DependentUpon>202002262246517_mm.cs</DependentUpon>
+    <Compile Include="Migrations\202003032054102_InitialMigration.cs" />
+    <Compile Include="Migrations\202003032054102_InitialMigration.Designer.cs">
+      <DependentUpon>202003032054102_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -222,6 +224,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -283,6 +287,9 @@
     <Content Include="Views\Contracts\UserContracts.cshtml" />
     <Content Include="Views\Offers\UserOffers.cshtml" />
     <Content Include="Views\Products\UserProducts.cshtml" />
+    <Content Include="Views\Products\_ProductHistory.cshtml" />
+    <Content Include="Views\Products\ProdHistory.cshtml" />
+    <Content Include="Views\Products\ProdDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,8 +311,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002262246517_mm.resx">
-      <DependentUpon>202002262246517_mm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003032054102_InitialMigration.resx">
+      <DependentUpon>202003032054102_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

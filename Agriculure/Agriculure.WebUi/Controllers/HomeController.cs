@@ -109,7 +109,8 @@ namespace Agriculure.WebUi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _dbContext.Users.Where(x => x.Email == Email && x.Password == Password).FirstOrDefault();
+                var encryptedPass = PasswordEncryptor.Encrypt(Password);
+                var user = _dbContext.Users.Where(x => x.Email == Email && x.Password == encryptedPass).FirstOrDefault();
                 if (user != null)
                 {
                     Session["currentUser"] = user;
@@ -133,6 +134,8 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult Profile(long UserId)
         {
             var user = _dbContext.Users.Where(x => x.ID == UserId).FirstOrDefault();
+            var decryptedPass = PasswordEncryptor.Decrypt(user.Password);
+            ViewBag.pass = decryptedPass;
             return View(user);
         }
         public ActionResult Logout()

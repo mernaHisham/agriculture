@@ -3,7 +3,7 @@ namespace Agriculure.WebUi.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class mm : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -60,6 +60,7 @@ namespace Agriculure.WebUi.Migrations
                         Liecnse = c.String(maxLength: 50),
                         UserID = c.Long(nullable: false),
                         Description = c.String(maxLength: 4000),
+                        CreationDate = c.DateTime(nullable: false),
                         image = c.String(maxLength: 100),
                     })
                 .PrimaryKey(t => t.ID)

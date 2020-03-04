@@ -29,6 +29,8 @@ namespace Agriculure.WebUi.Models
         [StringLength(4000)]
         public string Description { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
         [StringLength(100)]
         public string image { get; set; }
 

@@ -13,6 +13,7 @@ namespace Agriculure.WebUi.BLLs
         private Model1 _dbContext = new Model1();
         public long RegisterUser(UserVM userVM)
         {
+            var encryptedPass = PasswordEncryptor.Encrypt(userVM.Password);
             User user = new User
             {
                 Address = userVM.Address,
@@ -21,7 +22,7 @@ namespace Agriculure.WebUi.BLLs
                 Liecnse = userVM.Liecnse,
                 Name = userVM.Name,
                 NID = userVM.NID,
-                Password = userVM.Password,
+                Password = encryptedPass,
                 Phone = userVM.Phone,
                 RoleID = userVM.RoleID
             };

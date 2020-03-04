@@ -315,10 +315,10 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Deb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.initial.resources
 D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.mm.resources
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.mm.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.InitialMigration.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
