@@ -26,6 +26,7 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult UserOffers()
         {
             User user = (User)Session["currentUser"];
+            
             var Offers = db.Offers.Where(x => x.User.ID == user.ID);
             return View(Offers.ToList());
         }
@@ -52,6 +53,9 @@ namespace Agriculure.WebUi.Controllers
             ViewBag.ProductID = new SelectList(db.Products, "ID", "Name");
             ViewBag.offerowner = loggedUser.ID;
             ViewBag.Name = loggedUser.Name;
+
+            var userRoleId = loggedUser.RoleID;
+            ViewBag.userRoleId = userRoleId;
 
             ViewBag.offerowner = new SelectList(db.Users, "ID", "Name", loggedUser.ID);
             return View();

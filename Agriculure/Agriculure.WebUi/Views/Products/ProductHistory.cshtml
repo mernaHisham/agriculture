@@ -5,6 +5,11 @@
 }
 
 <!-- Start product history Part -->
+<style>
+</style>
+<link rel="stylesheet" href="~/css/Custom.css">
+
+
 
 <div class="timeline-header row py-2 align-content-center">
     <h2 class="py-1">Product History</h2>
@@ -17,6 +22,12 @@
             <button class="btn btn-primary" id="trace_btn">Trace</button>
         </div>
     </div>
+    <div class="row py-1 justify-content-center loading-container" style="width: 100%; display:none">
+        <div class="col-12" align="center">
+            <div class="loader"></div>
+        </div>
+        <div class="col-12" align="center">Getting Product Details...</div>
+    </div>
     <div id="prod_details" class="row justify-content-center" style="width: 100%">
 
     </div>
@@ -28,42 +39,50 @@
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-
 <script>
     $("#trace_btn").click(function () {
-        
-        var id = $("#product_id").val();
-        if (id === "" || id === undefined) {
-            $("#erorr").css("visibility", "visible");
-        } else {
-            $("#erorr").css("visibility", "hidden");
-            $.ajax({
-                type: 'GET',
-                url: "/Products/ProdDetails/" + id,
-                contentType: "application/json;",
-                datatype: 'json',
-                success: function (data) {
-                    $('#prod_details').html(data);
 
-                },
-                failure: function (errMsg) {
-                    alert(errMsg);
-                }
-            })
-            $.ajax({
-                type: 'GET',
-                url: "/Products/ProdHistory/" + id,
-                contentType: "application/json;",
-                datatype: 'json',
-                success: function (data) {
-                    $('#container').html(data);
-                
-                },
-                failure: function (errMsg) {
-                    alert(errMsg);
-                }
-            })
-        }
+            $(".loading-container").css("display", "inline-block")
+        setTimeout(function myfunction() {
+
+            var id = $("#product_id").val();
+            if (id === "" || id === undefined) {
+                $("#erorr").css("visibility", "visible");
+            } else {
+                $("#erorr").css("visibility", "hidden");
+                $.ajax({
+                    type: 'GET',
+                    url: "/Products/ProdDetails/" + id,
+                    contentType: "application/json;",
+                    datatype: 'json',
+                    success: function (data) {
+                        $(".loading-container").css("display", "none")
+
+                        $('#prod_details').html(data);
+
+                    },
+                    failure: function (errMsg) {
+                        alert(errMsg);
+                    }
+                })
+                $.ajax({
+                    type: 'GET',
+                    url: "/Products/ProdHistory/" + id,
+                    contentType: "application/json;",
+                    datatype: 'json',
+                    success: function (data) {
+                        $('#container').html(data);
+
+                    },
+                    failure: function (errMsg) {
+                        alert(errMsg);
+                    }
+                })
+            }
+
+        }, 2000);
+
+       
 
     })
 </script>

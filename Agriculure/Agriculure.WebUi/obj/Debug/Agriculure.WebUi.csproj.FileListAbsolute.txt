@@ -236,6 +236,10 @@ F:\AgiclutureSolution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculu
 F:\AgiclutureSolution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 F:\AgiclutureSolution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 F:\AgiclutureSolution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
+D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.initial.resources
+D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
+D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.mm.resources
+D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.dll.config
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.pdb
@@ -288,9 +292,15 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\ros
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\EntityFramework.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\EntityFramework.SqlServer.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.Security.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Web.Infrastructure.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Newtonsoft.Json.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Owin.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Helpers.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Mvc.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Optimization.dll
@@ -301,6 +311,11 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Sys
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\WebGrease.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\EntityFramework.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\EntityFramework.SqlServer.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.Owin.Security.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Helpers.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Mvc.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\System.Web.Optimization.xml
@@ -311,14 +326,16 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Sys
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Newtonsoft.Json.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.pdb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.LocalResources.Resource.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.InitialMigration.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
-D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.initial.resources
-D:\Source Code\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
-D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.mm.resources
-D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.InitialMigration.resources
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\ar\Agriculure.WebUi.resources.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\en\Agriculure.WebUi.resources.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.LocalResources.Resource.ar.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.LocalResources.Resource.en.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\ar\Agriculure.WebUi.resources.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\en\Agriculure.WebUi.resources.dll

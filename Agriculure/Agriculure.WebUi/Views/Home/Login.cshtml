@@ -39,7 +39,7 @@
                         </a>
                     </nav>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <H1 class="headerTxt text-center">The future of <br /><span>Agriculture</span></H1>
+                        <h1 class="headerTxt text-center">@Agriculure.WebUi.LocalResources.Resource.Slogan</h1>
 
                     </div>
                 </nav>
@@ -49,7 +49,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-12">
-                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "RegisterForm" }))
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "RegisterForm", id = "loginForm" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "error", new { @class = "text-danger text-uppercase", @style = "font-weight: bold;" })
@@ -68,7 +68,7 @@
                                 <a href="@Url.Action("ForgotPassword", "Home")" class="forgetPassLink" style="margin-top:-15px">Forgot Your password ?</a>
                             </div>
                             <div class="form-group col-12">
-                                <input class="btn btn-block" type="submit" value="Login" />
+                                <input class="btn btn-block" id="login" type="submit" value="Login" />
                             </div>
                             <span>Not a member ? <a class="navbar-brand brand-logo" href="@Url.Action("Register", "Home")">Create an Account</a></span>
                         }
@@ -96,6 +96,10 @@
                             </div>
                         }
 
+                        @*<button id="test">test</button>
+                        <button class="buttonload btn btn-primary">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+                        </button>*@
                     </div>
                 </div>
             </div>
@@ -115,14 +119,38 @@
         </section>
     </footer>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/wow.min.js"></script>
     <script>new WOW().init();</script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/site.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script>
+    <script src="/js/site.js"></script>
+    <script>
+        var loader = `<button class="buttonload btn" disabled style="width: inherit;
+                        background-color: #7aad37c7;
+                        background: #7aad37c7;
+                        padding: 7px;
+                        color: #fff;
+                        font-weight: bold;">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>  signing in...
+                        </button>`;
+        $("#test").click(function () {
+            $("#login").css("display", "none");
 
+            $("#login").prop("value", "");
+            $("#login").after(loader);
+            //$("#login").prop('disabled', true);
+            //$("#login").addClass('buttonload');
+            //$("#login").html("signing in...");
+        })
+
+        $("#loginForm").submit(function () {
+            $("#login").css("display", "none");
+            //$("#login").prop("value", "");
+            $("#login").after(loader);
+        })
+    </script>
 </body>
 
 </html>

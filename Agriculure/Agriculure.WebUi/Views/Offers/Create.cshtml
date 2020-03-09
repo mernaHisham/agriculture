@@ -7,6 +7,11 @@
     var ggggdd = ViewBag.offerowner;
 
     var dd = ViewBag.offerowner;
+
+    System.Web.Script.Serialization.JavaScriptSerializer ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+
+    var userRoleId = ser.Serialize(ViewBag.userRoleId);
 }
 
 <div class="container mt-3">
@@ -26,14 +31,14 @@
 
             <div class="form-group col-md-6 pull-left">
                 <label for="StackholderType">ProductID: </label>
-                @Html.DropDownList("ProductID", null, "select product", htmlAttributes: new { @class = "form-control"})
+                @Html.DropDownList("ProductID", null, "select product", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-md-6 pull-left">
                 <label for="Pesticides">Offer Owner:</label>
                 @*@Html.HiddenFor(x => x.offerowner)
                 <span>@ViewBag.Name</span>*@
-                @Html.DropDownList("offerowner", null, "select User", htmlAttributes: new { @class = "form-control", disabled = true })
+                @Html.DropDownList("offerowner", null, "select User", htmlAttributes: new { @class = "form-control", disabled = true, id = "OfferOwnerDDL" })
                 @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
 
             </div>
@@ -47,12 +52,6 @@
                 <label for="UnitPrice">End Date:</label>
                 @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-6 pull-left">
-                <label for="Origin">Descreption:</label>
-                @Html.EditorFor(model => model.Descreption, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descreption, "", new { @class = "text-danger" })
             </div>
 
             <!-- For Producer -->
@@ -79,7 +78,28 @@
                 @Html.ValidationMessageFor(model => model.currency, "", new { @class = "text-danger" })
             </div>
 
-            <div class="">
+            <div class="form-group col-md-6 pull-left desc farmer">
+                <label for="Origin">Pestisides:</label>
+                @Html.TextAreaFor(model => model.Descreption, new { @class = "form-control", rows = "4", @placeholder = "enter pestesides" })
+                @Html.ValidationMessageFor(model => model.Descreption, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6 pull-left desc supplier">
+                <label for="Origin">Origin:</label>
+                @Html.TextAreaFor(model => model.Descreption, new { @class = "form-control", rows = "4", @placeholder = "enter origin" })
+                @Html.ValidationMessageFor(model => model.Descreption, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6 pull-left desc producer">
+                <label for="Origin">Pestisides:</label>
+                @Html.TextAreaFor(model => model.Descreption, new { @class = "form-control", rows = "4", @placeholder = "enter pestesides" })
+                @Html.ValidationMessageFor(model => model.Descreption, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6 pull-left desc logistics">
+                <label for="Origin">Car Features:</label>
+                @Html.TextAreaFor(model => model.Descreption, new { @class = "form-control", rows = "4", @placeholder = "enter car features" })
+                @Html.ValidationMessageFor(model => model.Descreption, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-6 pull-left">
                 <div style="margin-top: 40px">
 
                     <label for="Quantity">
@@ -100,4 +120,30 @@
     </div>
 </section>
 <!-- End Form Part -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        var stackHTypeVal = parseInt(@userRoleId);
+        switch (stackHTypeVal) {
+            case 1:
+                $(".desc:not(.desc.farmer)").hide();
+                break;
+            case 2:
+                $(".desc:not(.desc.supplier)").hide();
+                break;
+            case 3:
+                $(".desc:not(.desc.logistics)").hide();
+                break;
+            case 4:
+                $(".desc:not(.desc.producer)").hide();
+                break;
+            default:
+        }
 
+
+        if (stackHTypeVal === 1) {
+            $(".desc:not(.desc.farmer)").hide();
+        }
+    })
+</script>

@@ -119,14 +119,7 @@ namespace Agriculure.WebUi.Controllers
             }
             ViewBag.ErrorMsg = "Email or Password is Incorrect";
             return View();
-
-            var farmer = /*_dbContext.Farmers.Where(z => z.FarmerEmail == Email && z.FarmerLiecnse == Password).Any()*/ true ;
-            if(farmer == true)
-            {
-                return RedirectToAction("Hello");
-            }
-            else
-            return RedirectToAction("Index");
+            
         }
 
         [Route("Home/Profile/{UserId}")]
