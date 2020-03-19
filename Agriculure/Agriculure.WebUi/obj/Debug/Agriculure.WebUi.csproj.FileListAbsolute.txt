@@ -339,3 +339,4 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Deb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.LocalResources.Resource.en.resources
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\ar\Agriculure.WebUi.resources.dll
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\en\Agriculure.WebUi.resources.dll
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csprojAssemblyReference.cache

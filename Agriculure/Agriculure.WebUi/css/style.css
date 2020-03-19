@@ -142,7 +142,7 @@ nav.bg-light.bg-grey{
     height: 40px;
 }
 nav.bg-light.bg-grey ul{
-    margin-left: 4%;
+    margin: auto;
 }
 .bg-grey ul li{
     width: 150px;

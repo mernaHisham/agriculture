@@ -57,27 +57,43 @@
             <!-- For Producer -->
             <div class="form-group col-md-6 pull-left">
                 <label for="Description">Unit:</label>
-                @Html.EditorFor(model => model.unit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.unit, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Unit" } })
                 @Html.ValidationMessageFor(model => model.unit, "", new { @class = "text-danger" })
             </div>
 
-            <!-- For Logistics -->
-            <div class="form-group col-md-6 pull-left">
-                <label for="Location">Quantity:</label>
-                @Html.EditorFor(model => model.quntity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.quntity, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-md-6 pull-left">
-                <label for="PriceKM">Price:</label>
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-            </div>
+
             <div class="form-group col-md-6 pull-left">
                 <label for="CarFeatures">Currency:</label>
-                @Html.EditorFor(model => model.currency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.currency, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Currency" } })
                 @Html.ValidationMessageFor(model => model.currency, "", new { @class = "text-danger" })
             </div>
 
+            <!-- quantity and price controls change based on user type -->
+            <div class="form-group col-md-6 pull-left price others">
+                <label for="PriceKM">Price:</label>
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Price" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-6 pull-left quantity others">
+                <label for="Location">Quantity:</label>
+                @Html.EditorFor(model => model.quntity, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Quantity" } })
+                @Html.ValidationMessageFor(model => model.quntity, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-6 pull-left price logistics">
+                <label for="PriceKM">Price per KM:</label>
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Price per KM" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-6 pull-left quantity logistics">
+                <label for="Location">Location:</label>
+                @Html.EditorFor(model => model.quntity, new { htmlAttributes = new { @class = "form-control", placeholder="Enter Location" } })
+                @Html.ValidationMessageFor(model => model.quntity, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- description control changes based on user type -->
             <div class="form-group col-md-6 pull-left desc farmer">
                 <label for="Origin">Pestisides:</label>
                 @Html.TextAreaFor(model => model.Descreption, new { @class = "form-control", rows = "4", @placeholder = "enter pestesides" })
@@ -128,22 +144,30 @@
         switch (stackHTypeVal) {
             case 1:
                 $(".desc:not(.desc.farmer)").hide();
+                $(".quantity:not(.quantity.others)").hide();
+                $(".price:not(.price.others)").hide();
                 break;
             case 2:
                 $(".desc:not(.desc.supplier)").hide();
+                $(".quantity:not(.quantity.others)").hide();
+                $(".price:not(.price.others)").hide();
                 break;
             case 3:
                 $(".desc:not(.desc.logistics)").hide();
+                $(".quantity:not(.quantity.logistics)").hide();
+                $(".price:not(.price.logistics)").hide();
                 break;
             case 4:
                 $(".desc:not(.desc.producer)").hide();
+                $(".quantity:not(.quantity.others)").hide();
+                $(".price:not(.price.others)").hide();
                 break;
             default:
         }
 
 
-        if (stackHTypeVal === 1) {
-            $(".desc:not(.desc.farmer)").hide();
-        }
+        //if (stackHTypeVal === 1) {
+        //    $(".desc:not(.desc.farmer)").hide();
+        //}
     })
 </script>
