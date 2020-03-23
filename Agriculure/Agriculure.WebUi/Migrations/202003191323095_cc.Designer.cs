@@ -7,13 +7,13 @@ namespace Agriculure.WebUi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialMigration : IMigrationMetadata
+    public sealed partial class cc : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cc));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003032054102_InitialMigration"; }
+            get { return "202003191323095_cc"; }
         }
         
         string IMigrationMetadata.Source

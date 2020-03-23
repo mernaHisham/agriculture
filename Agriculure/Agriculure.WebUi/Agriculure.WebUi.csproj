@@ -178,9 +178,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003032054102_InitialMigration.cs" />
-    <Compile Include="Migrations\202003032054102_InitialMigration.Designer.cs">
-      <DependentUpon>202003032054102_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202003191323095_cc.cs" />
+    <Compile Include="Migrations\202003191323095_cc.Designer.cs">
+      <DependentUpon>202003191323095_cc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -364,8 +364,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003032054102_InitialMigration.resx">
-      <DependentUpon>202003032054102_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003191323095_cc.resx">
+      <DependentUpon>202003191323095_cc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
