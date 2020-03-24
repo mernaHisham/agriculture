@@ -8,7 +8,14 @@
 <section class="FormSection" id="AddOfferForm">
     <div class="Account">
         <div class="row">
-            <h3 class="form-group col-md-12 col-lg-12 col-12 pull-left">My Account</h3>
+
+            <h3 class="form-group col-md-12 col-lg-12 col-12 pull-left">
+                My Account
+                <span>
+                    <a href="/Users/Edit/@Model.ID" title="Edit Profile"><i class="fa fa-edit"></i></a>
+                </span>
+            </h3>
+            
             <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                 <label class="control-label">Name: </label>
                 @Html.DisplayFor(model => model.Name)
@@ -16,9 +23,10 @@
             </div>
             <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                 <label class="control-label">Password: </label>
-
                 @ViewBag.pass
-
+            <span>
+                <a href="/Users/ChangePassword/@Model.ID" title="change password"><i class="fa fa-edit"></i></a>
+            </span>
             </div>
             <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
                 <label class="control-label">Company name: </label>

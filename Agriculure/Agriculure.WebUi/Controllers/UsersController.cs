@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Agriculure.WebUi.Models;
+using Agriculure.WebUi.Custom_Classes;
 
 namespace Agriculure.WebUi.Controllers
 {
@@ -73,7 +74,7 @@ namespace Agriculure.WebUi.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "RoleName", user.RoleID);
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
             return View(user);
         }
 
@@ -88,9 +89,42 @@ namespace Agriculure.WebUi.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile","Home",new { user.ID } );
             }
             ViewBag.RoleID = new SelectList(db.Roles, "ID", "RoleName", user.RoleID);
+            return View(user);
+        }
+
+        public ActionResult ChangePassword(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Id = user.ID;
+            return View();
+        }
+
+        // POST: Users/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(long? id,string Password, string oldPass,string confirmPass)
+        {
+            string encOldPass = PasswordEncryptor.Encrypt(oldPass);
+            User user = db.Users.Where(z => z.ID == id && z.Password == encOldPass).FirstOrDefault();
+            user.Password =  PasswordEncryptor.Encrypt(Password);
+            if(user != null && Password == confirmPass) { 
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Profile", "Home", new { user.ID });
+            }
             return View(user);
         }
 
