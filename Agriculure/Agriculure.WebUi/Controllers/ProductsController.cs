@@ -80,7 +80,7 @@ namespace Agriculure.WebUi.Controllers
                     Path.GetFileName(imageFile.FileName));
                     imageFile.SaveAs(path);
                     product.image = imageFile.FileName;
-                    product.CreationDate = DateTime.Now;
+                    product.CreationDate = DateTime.Today;
                 }
                 db.Products.Add(product);
                 db.SaveChanges();
@@ -255,6 +255,29 @@ namespace Agriculure.WebUi.Controllers
             }
 
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult GetByName(DateTime? date = null, string name = "")
+        {
+            User user = (User)Session["currentUser"];
+            var products = db.Products.Where(x => x.UserID != user.ID).ToList();
+
+            if (name != null && name != "")
+            {
+                var result = products.Where(x => x.Name.ToLower().StartsWith(name.ToLower())).ToList().Distinct();
+                return PartialView(result);
+            }
+            else if (date != null)
+            {
+                var dd = products.Where(x => x.CreationDate == date).ToList();
+                var result = products.Where(x => x.CreationDate == date).ToList().Distinct();
+                return PartialView(result);
+            }
+            else
+            {
+                return PartialView(products);
+            }
         }
     }
 }

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Agriculure.WebUi.Models.Product>
+
+@foreach (var item in Model)
+{
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card mb-4 o-hidden" style="height: 380px; max-height:unset">
+            <div class="card-img-top-div" style="background-image:url(/imgs/@item.image)"></div>
+            <div class="card-body">
+                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Name)</h5>
+                <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                <p class="text-muted mt-3">
+                    @Html.DisplayFor(modelItem => item.Liecnse)
+                </p>
+                <p class="text-muted mt-3">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                <div class="actions">
+                    @Html.ActionLink("Make Contract", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+
+                    @*<a href="@Url.Action("Delete","Products", new { id = item.ID })"
+                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                            Delete
+                        </a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

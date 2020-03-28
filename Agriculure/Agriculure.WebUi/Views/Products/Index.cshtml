@@ -95,14 +95,20 @@
 <div class="contracts-container">
 
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
-        <h2 class="col-9">Products: </h2>
-        <div class="col-3 pt-1">
+        <h2 class="col-2">Products: </h2>
+        
+        <input type="text" class="form-control col-2 mt-1 searchOffers" onkeyup="onSearchOffer('notClear', 'text')" placeholder="Search..." />
+        <span class="col-2 mt-2" align="center">or by date</span>
+        <input type="date" class="form-control col-2 mt-1 searchOffers-date" onchange="onSearchOffer('notClear', 'date')" />
+
+        <div class="col-4 pt-1">
+            <button class="btn btn-primary clear-search" onclick="onSearchOffer('')">clear</button>
             @Html.ActionLink("New Product", "Create", null, new { @class = "btn btn-primary" })
             @Html.ActionLink("My Products", "UserProducts", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 
-    <div class="row">
+    <div class="row oldRes">
 
         @foreach (var item in Model)
         {
@@ -135,4 +141,48 @@
         }
     </div>
 </div>
+<script>
+    function onSearchOffer(clear, inputType) {
+        debugger
+        let searchVal = '';
+        let searchValDate = new Date();
 
+        if (clear !== '' && clear !== undefined && clear !== null) {
+            if (inputType.includes('text')) {
+                searchVal = $(".searchOffers").val();
+                $(".searchOffers-date").val('');
+            } else if (inputType.includes('date')){
+                searchValDate = $(".searchOffers-date").val();
+                $(".searchOffers").val('');
+            }
+        } else {
+            $(".searchOffers").val('');
+            $(".searchOffers-date").val('');
+        }
+
+        var ajaxCallData = {
+            "name": searchVal,
+            "date": searchValDate
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetByName", "Products")",
+            data: ajaxCallData,
+            dataType: "html",
+            success: function (result) {
+                debugger
+                let cc = result;
+                console.log(result)
+                $(".oldRes").empty();
+                $('.oldRes').append(result)
+                //$(".oldRes").css("display", "none");
+            },
+            error: function (x, status, error) {
+                console.log(x)
+                console.log(status)
+                console.log(error)
+            }
+        })
+    }
+</script>
