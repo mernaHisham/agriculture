@@ -18,10 +18,17 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult Index()
         {
             User user = (User)Session["currentUser"];
-            var userOffersFromContracts = db.Contracts.Where(x => x.buyerID == user.ID || x.sellerID == user.ID).Select(x => x.OfferID).ToList();
+            if (user != null)
+            {
+                var userOffersFromContracts = db.Contracts.Where(x => x.buyerID == user.ID || x.sellerID == user.ID).Select(x => x.OfferID).ToList();
 
-            var offers = db.Offers.Where(x => x.User.ID != user.ID && !userOffersFromContracts.Any(r => x.ID == r)).ToList();
-            return View(offers);
+                var offers = db.Offers.Where(x => x.User.ID != user.ID && !userOffersFromContracts.Any(r => x.ID == r)).ToList();
+                return View(offers);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
         public ActionResult UserOffers()
         {
@@ -180,6 +187,30 @@ namespace Agriculure.WebUi.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult GetByName(DateTime? date = null, string name = "")
+        {
+            User user = (User)Session["currentUser"];
+            var userOffersFromContracts = db.Contracts.Where(x => x.buyerID == user.ID || x.sellerID == user.ID).Select(x => x.OfferID).ToList();
+
+            var offers = db.Offers.Where(x => x.User.ID != user.ID && !userOffersFromContracts.Any(r => x.ID == r)).ToList();
+
+            if (name != null && name != "")
+            {
+                var result = offers.Where(x => x.Product.Name.ToLower().StartsWith(name.ToLower())).ToList().Distinct();
+                return PartialView(result);
+            }
+            else if(date != null)
+            {
+                var result = offers.Where(x => x.StartDate == date).ToList().Distinct();
+                return PartialView(result);
+            }
+            else
+            {
+                return PartialView(offers);
+            }
         }
 
         protected override void Dispose(bool disposing)

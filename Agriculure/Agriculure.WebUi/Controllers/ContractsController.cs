@@ -18,9 +18,16 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult Index()
         {
             User user = (User)Session["currentUser"];
-            //shows pending contracts (that waits for acceptance or rejection) as a seller
-            var contracts = db.Contracts.Where(x => x.status == null && x.sellerID == user.ID).ToList();
-            return View(contracts);
+            if (user != null)
+            {
+                //shows pending contracts (that waits for acceptance or rejection) as a seller
+                var contracts = db.Contracts.Where(x => x.status == null && x.sellerID == user.ID).ToList();
+                return View(contracts);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         public ActionResult UserContracts()

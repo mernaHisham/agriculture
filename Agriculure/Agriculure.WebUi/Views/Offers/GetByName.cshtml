@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Agriculure.WebUi.Models.Offer>
+
+@foreach (var item in Model)
+{
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card mb-4 o-hidden">
+            @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+            <div class="card-body">
+                <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Product.Name)</h5>
+                <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                <p class="m-0">@Html.DisplayFor(modelItem => item.quntity) units</p>
+                <p class="m-0">@(item.price - 5) per unit <del><small>@Html.DisplayFor(modelItem => item.price)</small></del></p>
+                <p class="m-0">from: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                <p class="m-0">to: @Html.DisplayFor(modelItem => item.EndDate)</p>
+                @*<p class="m-0">to: @Html.DisplayFor(modelItem => item.Status)</p>*@
+
+                <p class="text-muted mt-3">
+                    @Html.DisplayFor(modelItem => item.currency)
+                </p>
+
+                <p class="text-muted mt-3">
+                    @Html.DisplayFor(modelItem => item.Descreption)
+                </p>
+
+                <div class="actions">
+                    @*@Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })*@
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+
+                    <button onclick="RequestContract(this, @item.ID)"
+                            class="btn btn-primary btn-icon-text" aria-label="Left Align">
+                        Request
+                    </button>
+
+                    @*<a href="@Url.Action("RequestContract","Offers", new { id = item.ID })"
+                           onclick="RequestContract()" class="btn btn-primary btn-icon-text" aria-label="Left Align">
+                            Request
+                        </a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

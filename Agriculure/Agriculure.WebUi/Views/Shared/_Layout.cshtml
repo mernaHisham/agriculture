@@ -202,6 +202,13 @@
                 }
             });
         })
+        $(document).ready(function () {
+            debugger
+            let session = @Session["currentUser"];
+            if (session === null || session === undefined) {
+                window.location = "/Home/Logout";
+            }
+        })
     </script>
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@

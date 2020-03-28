@@ -20,8 +20,15 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult Index()
         {
             User user = (User)Session["currentUser"];
-            var products = db.Products.Where(x => x.UserID != user.ID);
-            return View(products.ToList());
+            if (user != null)
+            {
+                var products = db.Products.Where(x => x.UserID != user.ID);
+                return View(products.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         public ActionResult UserProducts()

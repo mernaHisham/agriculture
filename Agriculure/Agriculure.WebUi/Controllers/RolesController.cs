@@ -17,7 +17,15 @@ namespace Agriculure.WebUi.Controllers
         // GET: Roles
         public ActionResult Index()
         {
-            return View(db.Roles.ToList());
+            User user = (User)Session["currentUser"];
+            if (user != null)
+            {
+                return View(db.Roles.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         // GET: Roles/Details/5

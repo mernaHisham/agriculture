@@ -18,8 +18,16 @@ namespace Agriculure.WebUi.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Role);
-            return View(users.ToList());
+            User user = (User)Session["currentUser"];
+            if (user != null)
+            {
+                var users = db.Users.Include(u => u.Role);
+                return View(users.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         // GET: Users/Details/5

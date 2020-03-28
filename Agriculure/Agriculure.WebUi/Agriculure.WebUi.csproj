@@ -332,6 +332,7 @@
     <Content Include="Views\Products\ProdDetails.cshtml" />
     <Content Include="Views\Language\Change.cshtml" />
     <Content Include="Views\Users\ChangePassword.cshtml" />
+    <Content Include="Views\Offers\GetByName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

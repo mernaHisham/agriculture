@@ -246,7 +246,6 @@ E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\New
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Antlr3.Runtime.pdb
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.LocalResources.Resource.resources
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.InitialMigration.resources
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.GenerateResource.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CoreCompileInputs.cache
 E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
@@ -359,3 +358,4 @@ D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\en\Agriculure.WebUi.resourc
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.cc.resources
