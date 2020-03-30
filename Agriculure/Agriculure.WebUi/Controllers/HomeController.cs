@@ -24,6 +24,10 @@ namespace Agriculure.WebUi.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (TempData["EmailExists"] != null)
+            {
+                ViewBag.EmailNotValid = "Email is not valid";
+            }
             //var SupplierLst = _dbContext.FarmSuppliers.ToList();
             //SelectList _SupplierLst = new SelectList(SupplierLst, "ID", "FarmerSName");
 
@@ -55,21 +59,27 @@ namespace Agriculure.WebUi.Controllers
         [HttpPost]
         public ActionResult Register(UserVM userVM)
         {
+            if (_dbContext.Users.Any(z => z.Email == userVM.Email))
+            {
+                TempData["EmailExists"] = "EmailNotValid";
+                return RedirectToAction("Register");
+            }
+
             if (ModelState.IsValid)
             {
                 var result = authBLL.RegisterUser(userVM);
 
-                if(result > 0)
+                if (result > 0)
                     return RedirectToAction("Index");
             }
-            
+
             var roles = _dbContext.Roles.Select(x => new RoleVM
             {
                 RoleID = x.RoleID,
                 RoleName = x.RoleName
             }).ToList();
             SelectList _stackHolderTypes = new SelectList(roles, "RoleID", "RoleName");
-            
+
             ViewBag.FarmerSID = _stackHolderTypes;
             //var roles = _dbContext.Roles.ToList();
             //SelectList _stackHolderTypes = new SelectList(roles, "ID", "RoleName");
@@ -105,7 +115,7 @@ namespace Agriculure.WebUi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string Email,string Password)
+        public ActionResult Login(string Email, string Password)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +129,7 @@ namespace Agriculure.WebUi.Controllers
             }
             ViewBag.ErrorMsg = "Email or Password is Incorrect";
             return View();
-            
+
         }
 
         [Route("Home/Profile/{UserId}")]
@@ -136,7 +146,7 @@ namespace Agriculure.WebUi.Controllers
             Session["currentUser"] = null;
             return RedirectToAction("Index");
         }
-        
+
         public ActionResult ForgotPassword()
         {
             return View();
@@ -145,10 +155,10 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult ForgotPassword(string Email)
         {
             var user = _dbContext.Users.Where(x => x.Email == Email).FirstOrDefault();
-            if(user != null)
+            if (user != null)
             {
                 int result = SendForgetPasswordMail(user.Email);
-                if(result == 0)
+                if (result == 0)
                 {
                     user.Password = "1456";
                     _dbContext.SaveChanges();

@@ -77,6 +77,10 @@ namespace Agriculure.WebUi.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            if (TempData["EmailExists"] != null)
+            {
+                ViewBag.EmailNotValid = "Email is not valid";
+            }
             User user = db.Users.Find(id);
             if (user == null)
             {
@@ -93,11 +97,16 @@ namespace Agriculure.WebUi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Address,Email,RoleID,Liecnse,NID,Password,Phone,CompanyName")] User user)
         {
+            if (db.Users.Any(z => z.Email == user.Email && z.ID != user.ID))
+            {
+                TempData["EmailExists"] = "EmailNotValid";
+                return RedirectToAction("Edit");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Profile","Home",new { user.ID } );
+                return RedirectToAction("Profile", "Home", new { user.ID });
             }
             ViewBag.RoleID = new SelectList(db.Roles, "ID", "RoleName", user.RoleID);
             return View(user);
@@ -123,12 +132,13 @@ namespace Agriculure.WebUi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(long? id,string Password, string oldPass,string confirmPass)
+        public ActionResult ChangePassword(long? id, string Password, string oldPass, string confirmPass)
         {
             string encOldPass = PasswordEncryptor.Encrypt(oldPass);
             User user = db.Users.Where(z => z.ID == id && z.Password == encOldPass).FirstOrDefault();
-            user.Password =  PasswordEncryptor.Encrypt(Password);
-            if(user != null && Password == confirmPass) { 
+            user.Password = PasswordEncryptor.Encrypt(Password);
+            if (user != null && Password == confirmPass)
+            {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Profile", "Home", new { user.ID });
