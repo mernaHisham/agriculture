@@ -1,52 +1,51 @@
 ﻿@model Agriculure.WebUi.Models.Product
-
 @{
-     ViewBag.Title = "Create Product";
+    ViewBag.Title = "Create Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="container mt-3">
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn  btn-dark" })
-    </div>
-    <section id="AddOfferForm" style="margin-top:15px">
-        <h2 class="text-center">Add Product</h2>
-        <div class="row">
+<div class="container mt-3">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn  btn-dark" })
+</div>
+<section id="AddOfferForm" style="margin-top:15px">
+    <h2 class="text-center">Add Product</h2>
+    <div class="row">
 
-            @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12", enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger text-uppercase", @style = "font-weight: bold;" })
-                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
-                    <label>
-                        Product Name:
-                    </label>
-                    @Html.TextBoxFor(z => z.Name, new { @class = "form-control", placeholder = "Product Name" })
-                    @Html.ValidationMessageFor(z => z.Name, "", new { @class = "text-danger font-bold", @style = "font-weight: bold;" })
-                </div>
-                
-                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
-                    <label>
-                        Lisence:
-                    </label>
-                    @Html.TextBoxFor(z => z.Liecnse, new { @class = "form-control", placeholder = "Lisence" })
-                    @Html.ValidationMessageFor(z => z.Liecnse, "", new { @class = "text-danger", @style = "font-weight: bold;" })
-                </div>
-                <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
-                    <label>
-                        Description :
-                    </label>
-                    @Html.TextBoxFor(z => z.Description, new { @class = "form-control", placeholder = "Company Name" })
-                    @Html.ValidationMessageFor(z => z.Description, "", new { @class = "text-danger", @style = "font-weight: bold;" })
-                </div>
-                <div class="form-group col-md-6 col-lg-6 col-12 pull-left mt-4 pt-3">
-                    <label>
-                        image :
-                    </label>
-                    <input type="file" name="imageFile" />
-                </div>
-                <div class="form-group col-12 pull-left">
-                    <button type="submit" class="btn btn-primary col-lg-3 col-sm-3">Add Product</button>
-                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger ml-1 col-lg-2 col-sm-2" })
-                </div>
-            }
-        </div>
-    </section>
+        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "RegisterForm col-md-12 col-lg-12 col-12", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger text-uppercase", @style = "font-weight: bold;" })
+            <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                <label>
+                    Product Name:
+                </label>
+                @Html.TextBoxFor(z => z.Name, new { @class = "form-control", placeholder = "Product Name" })
+                @Html.ValidationMessageFor(z => z.Name, "", new { @class = "text-danger font-bold", @style = "font-weight: bold;" })
+            </div>
+
+            <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                <label>
+                    Lisence:
+                </label>
+                @Html.TextBoxFor(z => z.Liecnse, new { @class = "form-control", placeholder = "Lisence" })
+                @Html.ValidationMessageFor(z => z.Liecnse, "", new { @class = "text-danger", @style = "font-weight: bold;" })
+            </div>
+            <div class="form-group col-md-6 col-lg-6 col-12 pull-left">
+                <label>
+                    Description :
+                </label>
+                @Html.TextBoxFor(z => z.Description, new { @class = "form-control", placeholder = "Company Name" })
+                @Html.ValidationMessageFor(z => z.Description, "", new { @class = "text-danger", @style = "font-weight: bold;" })
+            </div>
+            <div class="form-group col-md-6 col-lg-6 col-12 pull-left mt-4 pt-3">
+                <label>
+                    image :
+                </label>
+                <input type="file" name="imageFile" />
+            </div>
+            <div class="form-group col-12 pull-left">
+                <button type="submit" class="btn btn-primary col-lg-3 col-sm-3">Add Product</button>
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger ml-1 col-lg-2 col-sm-2" })
+            </div>
+        }
+    </div>
+</section>

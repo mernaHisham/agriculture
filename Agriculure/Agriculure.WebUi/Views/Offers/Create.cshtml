@@ -1,5 +1,4 @@
 ﻿@model Agriculure.WebUi.Models.Offer
-
 @{
     ViewBag.Title = "Create Offer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -37,7 +36,7 @@
             <div class="form-group col-md-6 pull-left">
                 <label for="Pesticides">Offer Owner:</label>
                 @*@Html.HiddenFor(x => x.offerowner)
-                <span>@ViewBag.Name</span>*@
+                    <span>@ViewBag.Name</span>*@
                 @Html.DropDownList("offerowner", null, "select User", htmlAttributes: new { @class = "form-control", disabled = true, id = "OfferOwnerDDL" })
                 @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
 
@@ -89,7 +88,7 @@
 
             <div class="form-group col-md-6 pull-left quantity logistics">
                 <label for="Location">Location:</label>
-                @Html.EditorFor(model => model.quntity, new { htmlAttributes = new { @class = "form-control", placeholder="Enter Location" } })
+                @Html.EditorFor(model => model.quntity, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Location" } })
                 @Html.ValidationMessageFor(model => model.quntity, "", new { @class = "text-danger" })
             </div>
 

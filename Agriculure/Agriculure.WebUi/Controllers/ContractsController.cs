@@ -13,7 +13,6 @@ namespace Agriculure.WebUi.Controllers
     public class ContractsController : Controller
     {
         private Model1 db = new Model1();
-
         // GET: Contracts
         public ActionResult Index()
         {
@@ -188,7 +187,7 @@ namespace Agriculure.WebUi.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public ActionResult Reject(long id)
         {
             var contract = db.Contracts.Where(x => x.ID == id).FirstOrDefault();

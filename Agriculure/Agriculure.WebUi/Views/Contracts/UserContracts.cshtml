@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Agriculure.WebUi.Models.Contract>
-
 @{
     ViewBag.Title = "My Contracts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -134,7 +133,7 @@
         </ul>
         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
     </div>
-    
+
 
     <div class="tab-content" id="pills-tabContent">
 
@@ -158,17 +157,17 @@
                                 <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
 
                                 @*<p class="text-muted mt-3">
-                                    @Html.DisplayFor(modelItem => item.status)
-                                </p>*@
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </p>*@
 
                                 @*<div class="actions">
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 
-                                    <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                                       onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                        Delete
-                                    </a>
-                                </div>*@
+                                        <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                            Delete
+                                        </a>
+                                    </div>*@
                             </div>
                         </div>
                     </div>
@@ -197,8 +196,8 @@
                                 <p class="m-0">Requested at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.requestDate))</p>
                                 <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
                                 @*<p class="text-muted mt-3">
-                                    @Html.DisplayFor(modelItem => item.status)
-                                </p>*@
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </p>*@
 
                                 <div class="actions">
 
@@ -236,17 +235,17 @@
                                 <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
 
                                 @*<p class="text-muted mt-3">
-                                @Html.DisplayFor(modelItem => item.status)
-                            </p>*@
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </p>*@
 
                                 @*<div class="actions">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 
-                                <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                                   onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                    Delete
-                                </a>
-                            </div>*@
+                                        <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                            Delete
+                                        </a>
+                                    </div>*@
                             </div>
                         </div>
                     </div>
@@ -276,17 +275,17 @@
                                 <p class="m-0">Accepted at: @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.acceptDate))</p>
 
                                 @*<p class="text-muted mt-3">
-                                @Html.DisplayFor(modelItem => item.status)
-                            </p>*@
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </p>*@
 
                                 @*<div class="actions">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
 
-                                <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                                   onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                    Delete
-                                </a>
-                            </div>*@
+                                        <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
+                                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
+                                            Delete
+                                        </a>
+                                    </div>*@
                             </div>
                         </div>
                     </div>

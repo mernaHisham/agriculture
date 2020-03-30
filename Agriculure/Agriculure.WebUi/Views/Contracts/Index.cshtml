@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<Agriculure.WebUi.Models.Contract>
-
 @{
     ViewBag.Title = "Contracts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     #AddOfferForm {
         width: 90%;
@@ -20,92 +18,11 @@
         padding-bottom: 1px;
     }
 </style>
-
-@*<section class="FormSection" id="AddOfferForm">
-    <div class="Registration">
-
-
-        <h2>Contracts : </h2>
-        <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Offer.Descreption)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User1.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.requestDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.acceptDate)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Offer.Descreption)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User1.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.requestDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.acceptDate)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
-                        <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                           onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </div>
-</section>*@
-
-
 <div class="contracts-container">
 
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
         <h2 class="col-9">Incoming Contract Requests: </h2>
         <div class="col-3 pt-1">
-            @*@Html.ActionLink("New Contract", "Create", null, new { @class = "btn btn-primary" })*@
             @Html.ActionLink("My Contracts", "UserContracts", null, new { @class = "btn btn-primary" })
         </div>
     </div>
@@ -116,7 +33,6 @@
         {
             <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 o-hidden">
-                    @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
                     <div class="card-body">
                         <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Offer.Product.Name)</h5>
                         <p class="m-0 text-small text-muted"><small>buyer: @Html.DisplayFor(modelItem => item.User1.Name)</small></p>
@@ -125,11 +41,6 @@
                         <p class="m-0">@Html.DisplayFor(modelItem => item.Price) per unit</p>
                         <p class="m-0">from: @Html.DisplayFor(modelItem => item.requestDate)</p>
                         <p class="m-0">to: @Html.DisplayFor(modelItem => item.acceptDate)</p>
-
-                        @*<p class="text-muted mt-3">
-            @Html.DisplayFor(modelItem => item.status)
-        </p>*@
-
                         <div class="actions">
                             @Html.ActionLink("Accept", "Accept", new { id = item.ID }, new { @class = "btn btn-primary" })
 
@@ -138,15 +49,6 @@
                                 Reject
                             </a>
                         </div>
-
-                        @*<div class="actions">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
-
-                            <a href="@Url.Action("Delete","Contracts", new { id = item.ID })"
-                               onclick="return confirm('are you sure to delete item ?!')" class="btn btn-danger btn-icon-text" aria-label="Left Align">
-                                Delete
-                            </a>
-                        </div>*@
                     </div>
                 </div>
             </div>

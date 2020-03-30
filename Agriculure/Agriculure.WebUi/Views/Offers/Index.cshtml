@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Agriculure.WebUi.Models.Offer>
-
 @{
     ViewBag.Title = "Offers";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,16 +8,19 @@
     #AddOfferForm {
         width: 90%;
     }
+
     .contracts-container {
         padding: 50px 0;
         width: 85%;
         margin: 5px auto;
     }
+
     .bodyContainer {
         padding-bottom: 1px;
     }
-    .card{
-        max-height:350px;
+
+    .card {
+        max-height: 350px;
     }
 </style>
 
@@ -28,8 +30,8 @@
         <h2 class="col-2">Offers: </h2>
         <input type="text" class="form-control col-2 mt-1 searchOffers" onkeyup="onSearchOffer('notClear', 'text')" placeholder="Search..." />
         <span class="col-2 mt-2" align="center">or by date</span>
-        <input type="date" class="form-control col-2 mt-1 searchOffers-date" onchange="onSearchOffer('notClear', 'date')"/>
-        
+        <input type="date" class="form-control col-2 mt-1 searchOffers-date" onchange="onSearchOffer('notClear', 'date')" />
+
         <div class="col-4 pt-1" align="right">
             <button class="btn btn-primary clear-search" onclick="onSearchOffer('')">clear</button>
             @Html.ActionLink("New Offer", "Create", null, new { @class = "btn btn-primary" })
@@ -37,55 +39,55 @@
         </div>
     </div>
 
-        <div class="oldRes row" style="width:100%">
-            @foreach (var item in Model)
-            {
+    <div class="oldRes row" style="width:100%">
+        @foreach (var item in Model)
+        {
 
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4 o-hidden">
-                        @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
-                        <div class="card-body">
-                            <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Product.Name)</h5>
-                            <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
-                            <p class="m-0">@Html.DisplayFor(modelItem => item.quntity) units</p>
-                            <p class="m-0">@(item.price - 5) per unit <del><small>@Html.DisplayFor(modelItem => item.price)</small></del></p>
-                            <p class="m-0">from: @Html.DisplayFor(modelItem => item.StartDate)</p>
-                            <p class="m-0">to: @Html.DisplayFor(modelItem => item.EndDate)</p>
-                            @*<p class="m-0">to: @Html.DisplayFor(modelItem => item.Status)</p>*@
+            <div class="col-md-6 col-lg-3">
+                <div class="card mb-4 o-hidden">
+                    @*<img alt="" class="card-img-top" src="./imgs/orange.jpg">*@
+                    <div class="card-body">
+                        <h5 class="m-0 font-weight-bold text-capitalize">@Html.DisplayFor(modelItem => item.Product.Name)</h5>
+                        <p class="m-0 text-small text-muted"><small>@Html.DisplayFor(modelItem => item.User.Name)</small></p>
+                        <p class="m-0">@Html.DisplayFor(modelItem => item.quntity) units</p>
+                        <p class="m-0">@(item.price - 5) per unit <del><small>@Html.DisplayFor(modelItem => item.price)</small></del></p>
+                        <p class="m-0">from: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                        <p class="m-0">to: @Html.DisplayFor(modelItem => item.EndDate)</p>
+                        @*<p class="m-0">to: @Html.DisplayFor(modelItem => item.Status)</p>*@
 
-                            <p class="text-muted mt-3">
-                                @Html.DisplayFor(modelItem => item.currency)
-                            </p>
+                        <p class="text-muted mt-3">
+                            @Html.DisplayFor(modelItem => item.currency)
+                        </p>
 
-                            <p class="text-muted mt-3">
-                                @Html.DisplayFor(modelItem => item.Descreption)
-                            </p>
+                        <p class="text-muted mt-3">
+                            @Html.DisplayFor(modelItem => item.Descreption)
+                        </p>
 
-                            <div class="actions">
-                                @*@Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })*@
-                                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-                           
-                                <button onclick="RequestContract(this, @item.ID)" 
-                                        class="btn btn-primary btn-icon-text" aria-label="Left Align">
-                                    Request
-                                </button>
+                        <div class="actions">
+                            @*@Html.ActionLink("Request", "Index", new { id = item.ID }, new { @class = "btn btn-primary" })*@
+                            @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
 
-                                @*<a href="@Url.Action("RequestContract","Offers", new { id = item.ID })"
+                            <button onclick="RequestContract(this, @item.ID)"
+                                    class="btn btn-primary btn-icon-text" aria-label="Left Align">
+                                Request
+                            </button>
+
+                            @*<a href="@Url.Action("RequestContract","Offers", new { id = item.ID })"
                                    onclick="RequestContract()" class="btn btn-primary btn-icon-text" aria-label="Left Align">
                                     Request
                                 </a>*@
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            }
-        </div>
-        <div class="newRes row" style="width:100%">
+        }
+    </div>
+    <div class="newRes row" style="width:100%">
 
-        </div>
+    </div>
     @*<div class="row res">
-    </div>*@
+        </div>*@
 </div>
 
 <script>
@@ -120,7 +122,7 @@
             })
         }
     }
-    
+
     function onSearchOffer(clear, inputType) {
         debugger
         let searchVal = '';
