@@ -4,12 +4,12 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Farmers">Farmers</a></li>/<li>New Farmer</li></ul></div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Registrion</h4>
         <hr />

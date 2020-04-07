@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Offers">Offers</a></li>/<li>Delete Offer</li></ul></div>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -94,7 +94,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

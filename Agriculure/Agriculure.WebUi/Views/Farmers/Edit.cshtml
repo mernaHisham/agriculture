@@ -4,12 +4,12 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Farmers">Farmers</a></li>/<li>Edit Farmer</li></ul></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Farmer</h4>
         <hr />
