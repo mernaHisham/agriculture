@@ -99,7 +99,7 @@
 
     $(document).ready(function () {
         var prodId = @ID;
-        if (prodId !== null) {
+        if (prodId !== null && prodId > 0) {
             $("#trace_btn").trigger("click");
         }
     })
