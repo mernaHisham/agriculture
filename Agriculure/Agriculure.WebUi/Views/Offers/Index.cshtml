@@ -26,7 +26,11 @@
 <div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Offers">Offers</a></li></ul></div>
 
 <div class="contracts-container">
+    @if (ViewBag.RelatedDataError != null)
+    {
+        <div class="alert alert-danger text-center">@ViewBag.RelatedDataError</div>
 
+    }
     <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
         <h2 class="col-2">Offers: </h2>
         <input type="text" class="form-control col-2 mt-1 searchOffers" onkeyup="onSearchOffer('notClear', 'text')" placeholder="Search..." />

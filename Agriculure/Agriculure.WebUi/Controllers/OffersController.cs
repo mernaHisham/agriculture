@@ -17,6 +17,10 @@ namespace Agriculure.WebUi.Controllers
         // GET: Offers
         public ActionResult Index()
         {
+            if (TempData["RelatedDataError"] != null)
+            {
+                ViewBag.RelatedDataError = "Can`t delete offer bacause of related contracts";
+            }
             User user = (User)Session["currentUser"];
             if (user != null)
             {
@@ -158,10 +162,16 @@ namespace Agriculure.WebUi.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Delete(long id)
         {
-            Offer offer = db.Offers.Find(id);
-            db.Offers.Remove(offer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try {
+                Offer offer = db.Offers.Find(id);
+                db.Offers.Remove(offer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            } catch (Exception e) {
+                TempData["RelatedDataError"] = "RelatedDataError";
+                return RedirectToAction("Index");
+            }
+           
         }
 
         [HttpPost]
