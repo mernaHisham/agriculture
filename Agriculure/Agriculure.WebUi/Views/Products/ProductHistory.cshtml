@@ -30,6 +30,9 @@
     <div id="prod_details" class="row justify-content-center" style="width: 100%">
 
     </div>
+    <div id="error_not_authorized" class="row justify-content-center text-danger font-weight-bold" style="width: 100%; display:none">
+        you are not authorized to view this product.
+    </div>
     @*<p class="text-xl-center text-success" ></p>*@
 </div>
 <div id="container">
@@ -55,12 +58,13 @@
                     contentType: "application/json;",
                     datatype: 'json',
                     success: function (data) {
+                        //debugger
                         $(".loading-container").css("display", "none")
-
                         $('#prod_details').html(data);
-
+                        
                     },
                     failure: function (errMsg) {
+                        debugger
                         alert(errMsg);
                     }
                 })
@@ -70,11 +74,18 @@
                     contentType: "application/json;",
                     datatype: 'json',
                     success: function (data) {
-                        $('#container').html(data);
+                        debugger
+                        if (data === "not authorized") {
+                            $("#error_not_authorized").css("display", "inline-block")
+                        } else {
+                            $('#container').html(data);
+                        }
 
                     },
                     failure: function (errMsg) {
                         alert(errMsg);
+                        debugger
+                        $("#error_not_authorized").css("display", "inline-block")
                     }
                 })
             }

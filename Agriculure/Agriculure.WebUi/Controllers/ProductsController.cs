@@ -182,7 +182,10 @@ namespace Agriculure.WebUi.Controllers
         [HttpGet]
         public ActionResult ProdDetails(long ID)
         {
-            var product = db.Products.Where(x => x.ID == ID).FirstOrDefault();
+            var user = (User)Session["currentUser"];
+            var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            if (product == null)
+                return PartialView(null);
 
             return PartialView(product);
         }
@@ -193,6 +196,9 @@ namespace Agriculure.WebUi.Controllers
         {
             var user = (User)Session["currentUser"];
             var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            if(product == null)
+                return PartialView(null);
+
             List<ICollection<Contract>> prodContracts = new List<ICollection<Contract>>();
             List<ProductDetails> productDetails = new List<ProductDetails>();
             

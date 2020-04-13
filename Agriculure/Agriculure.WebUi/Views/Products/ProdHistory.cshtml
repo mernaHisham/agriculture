@@ -1,74 +1,94 @@
 ﻿@model List<Agriculure.WebUi.Custom_Classes.ProductDetails>
 @{
     var counter = 0;
+    bool err = false;
 }
-<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Products">Products</a></li>/<li>Product History</li></ul></div>
+@*<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Products">Products</a></li>/<li>Product History</li></ul></div>*@
+
 
 <div class="timeline">
-
-    @foreach (var item in Model)
-    {
-        counter++;
-
-        if (counter % 2 == 0)
+    @{
+        try
         {
-            <div class="container left">
-                <div class="content">
-                    <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
-                    <p class="mb-0">
-                        <small>@item.ActionType</small>
-                    </p>
-                    @if (item.ActionType.Contains("Contract"))
-                    {
-                        <p class="mb-0">
-                            buyer <small>@item.UserName1</small>
-                        </p>
-                        <p>
-                            Seller <small>@item.UserName2</small>
-                        </p>
-                    }
-                    else
-                    {
-                        <p>
-                            By <small>@item.UserName1</small>
-                        </p>
-                    }
-                    <p>
-                        @item.Description
-                    </p>
+
+            foreach (var item in Model)
+            {
+                counter++;
+
+                if (counter % 2 == 0 && err == false)
+                {
+                    <div class="container left">
+                        <div class="content">
+                            <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
+                            <p class="mb-0">
+                                <small>@item.ActionType</small>
+                            </p>
+                            @if (item.ActionType.Contains("Contract"))
+                            {
+                                <p class="mb-0">
+                                    buyer <small>@item.UserName1</small>
+                                </p>
+                                <p>
+                                    Seller <small>@item.UserName2</small>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    By <small>@item.UserName1</small>
+                                </p>
+                            }
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="container right">
+                        <div class="content">
+                            <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
+                            <p class="mb-0">
+                                <small>@item.ActionType</small>
+                            </p>
+                            @if (item.ActionType.Contains("Contract"))
+                            {
+                                <p class="mb-0">
+                                    buyer <small>@item.UserName1</small>
+                                </p>
+                                <p>
+                                    Seller <small>@item.UserName2</small>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    By <small>@item.UserName1</small>
+                                </p>
+                            }
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+
+        }
+        catch (Exception)
+        {
+            err = true;
+            <div class="timeline-header row py-2 align-content-center">
+                <div class="text-center text-danger font-weight-bold" style="z-index:999">
+                    <h1>you are not authorized to view this product</h1>
                 </div>
             </div>
+
         }
-        else
-        {
-            <div class="container right">
-                <div class="content">
-                    <h2>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ActionDate))</h2>
-                    <p class="mb-0">
-                        <small>@item.ActionType</small>
-                    </p>
-                    @if (item.ActionType.Contains("Contract"))
-                    {
-                        <p class="mb-0">
-                            buyer <small>@item.UserName1</small>
-                        </p>
-                        <p>
-                            Seller <small>@item.UserName2</small>
-                        </p>
-                    }
-                    else
-                    {
-                        <p>
-                            By <small>@item.UserName1</small>
-                        </p>
-                    }
-                    <p>
-                        @item.Description
-                    </p>
-                </div>
-            </div>
-        }
+
     }
+
 
     @*<div class="container left">
             <div class="content">
@@ -87,4 +107,5 @@
             </div>
         </div>*@
 </div>
+
 

@@ -202,8 +202,9 @@ namespace Agriculure.WebUi.Controllers
                 message = null;
                 return 0;
             }
-            catch (Exception x)
+            catch (Exception exxxx)
             {
+                string msg = exxxx.Message;
                 return -1;
             }
         }
