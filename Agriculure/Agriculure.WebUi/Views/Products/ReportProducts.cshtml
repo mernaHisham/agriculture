@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Agriculure.WebUi.Models.Product>
+@{
+    ViewBag.Title = "ReportProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="bannerDiv"><ul><li><a href="/Home">Home</a></li>/<li><a href="/Products">Products</a></li></ul></div>
+
+<div class="contracts-container">
+
+    <div class="row justify-content-between" style="width: 100%; background-color:#F0F0F0;padding:20px;border-radius:10px; margin-bottom:30px">
+        <h2 class="col-8">Products: </h2>
+
+        <div class="col-4 pt-1" align="right">
+            @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+        <div class="row oldRes mt-5 px-2 justify-content-center" style="width: 100%">
+
+            <table class="table text-center table-hover" style="width: 80%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Liecnse</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@item.Liecnse</td>
+                            <td>
+                                @*<input type="button" value="Trace" onclick="location.href='@Url.Action("ProductHistory", "Products")?Id=' + @item.ID" />*@
+                                @Html.ActionLink("Trace", "ProductHistory", new { Id = item.ID }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+            
+        </div>
+    
+    </div>
+
+</div>
+

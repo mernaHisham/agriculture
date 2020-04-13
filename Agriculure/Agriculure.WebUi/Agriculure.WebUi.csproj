@@ -334,6 +334,7 @@
     <Content Include="Views\Users\ChangePassword.cshtml" />
     <Content Include="Views\Offers\GetByName.cshtml" />
     <Content Include="Views\Products\GetByName.cshtml" />
+    <Content Include="Views\Products\ReportProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

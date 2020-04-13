@@ -34,13 +34,14 @@
         <h2 class="col-2">Products: </h2>
 
         <input type="text" class="form-control col-2 mt-1 searchOffers" onkeyup="onSearchOffer('notClear', 'text')" placeholder="Search..." />
-        <span class="col-2 mt-2" align="center">or by date</span>
+        <span class="col-1 text-small" align="center">or by date</span>
         <input type="date" class="form-control col-2 mt-1 searchOffers-date" onchange="onSearchOffer('notClear', 'date')" />
 
-        <div class="col-4 pt-1">
+        <div class="col-5 pt-1">
             <button class="btn btn-primary clear-search" onclick="onSearchOffer('')">clear</button>
             @Html.ActionLink("New Product", "Create", null, new { @class = "btn btn-primary" })
             @Html.ActionLink("My Products", "UserProducts", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Reports", "ReportProducts", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 

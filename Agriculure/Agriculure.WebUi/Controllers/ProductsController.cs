@@ -31,6 +31,20 @@ namespace Agriculure.WebUi.Controllers
             }
         }
 
+        public ActionResult ReportProducts()
+        {
+            User user = (User)Session["currentUser"];
+            if (user != null)
+            {
+                var products = db.Products;
+                return View(products.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
+        }
+
         public ActionResult UserProducts()
         {
             User user = (User)Session["currentUser"];
@@ -171,11 +185,14 @@ namespace Agriculure.WebUi.Controllers
         }
 
         [HttpGet]
-        public ActionResult ProductHistory()
+        public ActionResult ProductHistory(int Id = 0)
         {
             var user = (User)Session["currentUser"];
             if (user == null)
                 return RedirectToAction("Login", "Home");
+
+            ViewBag.prodId = Id;
+
             return View();
         }
 
