@@ -21,7 +21,7 @@ namespace Agriculure.WebUi.Controllers
         {
             if (TempData["RelatedDataError"] != null)
             {
-                ViewBag.RelatedDataError = "Can`t delete offer bacause of related offers";
+                ViewBag.RelatedDataError = "Can`t delete product bacause of related offers";
             }
             User user = (User)Session["currentUser"];
             if (user != null)
