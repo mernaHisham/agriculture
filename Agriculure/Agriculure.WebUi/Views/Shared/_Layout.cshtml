@@ -2,10 +2,10 @@
 @{
     User currentUser = (Session["currentUser"] != null) ? Session["currentUser"] as User : null;
     List<string> langs = new List<string>
-    {
-        "en",
-        "ar"
-    };
+{
+"en",
+"ar"
+};
 }
 <!DOCTYPE html>
 <html>
@@ -102,18 +102,18 @@
                                 @Html.ActionLink(Agriculure.WebUi.LocalResources.Resource.Product_History, "ProductHistory", "Products", null, new { @class = "nav-link text-center" })
                             </li>
                             @*<li class="nav-hiddable" style="margin: 0px auto">
-                                @Html.DropDownList("Lang", new SelectList(langs, Request.Cookies["Language"].Value), null, new { @class = "nav-link text-center langDDL" })
-                            </li>*@
+                                    @Html.DropDownList("Lang", new SelectList(langs, Request.Cookies["Language"].Value), null, new { @class = "nav-link text-center langDDL" })
+                                </li>*@
 
                             @*@if ((Session["currentUser"]) == null)
-        {
-            <li class="nav-item nav-hiddable">
-                @Html.ActionLink(Agriculure.WebUi.LocalResources.Resource.Register, "Register", "Home", new { @class = "nav-link text-center" })
-            </li>
-            <li class="nav-item nav-hiddable">
-                @Html.ActionLink(Agriculure.WebUi.LocalResources.Resource.Login, "Login", "Home", new { @class = "nav-link text-center" })
-            </li>
-        }*@
+                                {
+                                    <li class="nav-item nav-hiddable">
+                                        @Html.ActionLink(Agriculure.WebUi.LocalResources.Resource.Register, "Register", "Home", new { @class = "nav-link text-center" })
+                                    </li>
+                                    <li class="nav-item nav-hiddable">
+                                        @Html.ActionLink(Agriculure.WebUi.LocalResources.Resource.Login, "Login", "Home", new { @class = "nav-link text-center" })
+                                    </li>
+                                }*@
                         </ul>
                     </div>
                 </nav>
@@ -152,8 +152,8 @@
                             </li>
                         }
                         @*<li class="nav-item main-hiddable-nav" style="margin-left: 50px;width: unset;">
-                            @Html.DropDownList("Lang", new SelectList(langs, Request.Cookies["Language"].Value), null, new { @class = "nav-link text-center langDDL" })
-                        </li>*@
+                                @Html.DropDownList("Lang", new SelectList(langs, Request.Cookies["Language"].Value), null, new { @class = "nav-link text-center langDDL" })
+                            </li>*@
                     </ul>
                 </div>
             </nav>
@@ -173,7 +173,7 @@
                     CopyRight &copy; 2020, all rights reserved <span></span>
 
                     @*<small>@Html.ActionLink("arabic", "Change", "Language", new { LanguageAbbreviaton = "ar" }, null)</small>
-                    <small>@Html.ActionLink("english", "Change", "Language", new { LanguageAbbreviaton = "en" }, null)</small>*@
+                        <small>@Html.ActionLink("english", "Change", "Language", new { LanguageAbbreviaton = "en" }, null)</small>*@
                 </p>
             </div>
         </section>
@@ -195,7 +195,7 @@
                 //url: "/ControllerName/ActionName",
                 url: '/Language/Change/?LanguageAbbreviaton=' + ddlValue,
                 success: function (data) {
-                    // your data could be a View or Json or what ever you returned in your action method 
+                    // your data could be a View or Json or what ever you returned in your action method
                     // parse your data here
                     //alert(data);
                     location.reload()
@@ -210,8 +210,8 @@
             }
         })
     </script>
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
 
     @RenderSection("scripts", required: false)
 </body>

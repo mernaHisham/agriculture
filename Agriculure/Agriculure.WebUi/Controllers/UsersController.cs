@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Agriculure.WebUi.Models;
 using Agriculure.WebUi.Custom_Classes;
+using Agriculure.WebUi.ViewModel;
 
 namespace Agriculure.WebUi.Controllers
 {
@@ -134,16 +135,44 @@ namespace Agriculure.WebUi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(long? id, string Password, string oldPass, string confirmPass)
         {
-            string encOldPass = PasswordEncryptor.Encrypt(oldPass);
-            User user = db.Users.Where(z => z.ID == id && z.Password == encOldPass).FirstOrDefault();
-            user.Password = PasswordEncryptor.Encrypt(Password);
-            if (user != null && Password == confirmPass)
+            try
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Profile", "Home", new { user.ID });
+                string encOldPass = PasswordEncryptor.Encrypt(oldPass);
+                User user = db.Users.Where(z => z.ID == id && z.Password == encOldPass).FirstOrDefault();
+                if (user != null)
+                {
+                    user.Password = PasswordEncryptor.Encrypt(Password);
+
+                    if (Password == confirmPass)
+                    {
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Profile", "Home", new { user.ID });
+                    }
+                    else
+                    {
+                        ViewBag.NotMatching = "confirm password not matching";
+                        ViewBag.Id = id;
+                        return View();
+                    }
+
+                }
+                else
+                {
+                    ViewBag.WrongOldPass = "Wrong Old Password";
+                    ViewBag.Id = id;
+                    return View();
+                }
+
             }
-            return View(user);
+            catch (Exception)
+            {
+                ViewBag.somethingwentwrong = "some thing went wrong";
+                ViewBag.Id = id;
+                return View();
+
+            }
+
         }
 
         // GET: Users/Delete/5
