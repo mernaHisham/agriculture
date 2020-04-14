@@ -5,6 +5,7 @@ using Agriculure.WebUi.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
@@ -160,7 +161,9 @@ namespace Agriculure.WebUi.Controllers
                 int result = SendForgetPasswordMail(user.Email);
                 if (result == 0)
                 {
-                    user.Password = "1456";
+                   
+                    var encryptedPass = PasswordEncryptor.Encrypt("1456");
+                    user.Password = encryptedPass;
                     _dbContext.SaveChanges();
                     return RedirectToAction("EmailSent");
                 }
@@ -178,35 +181,73 @@ namespace Agriculure.WebUi.Controllers
             return View();
         }
 
-        public int SendForgetPasswordMail(string ToEmail)
-        {
-            try
+        //public int SendForgetPasswordMail(string ToEmail)
+        //{
+        //    try
+        //    {
+        //        SmtpClient smtpClient = new SmtpClient("dc-b34e10b12d8e.rpaegypt.com", 587);
+        //        MailMessage message = new MailMessage();
+        //        message.From = new MailAddress("alisakralaraby@gmail.com");
+        //        message.Body = "Use This Password Temporarly, we recommend you to change it. /n 1456";
+        //        message.To.Add(ToEmail);
+
+        //        message.Subject = "Temporary Password";
+        //        smtpClient.UseDefaultCredentials = true;
+        //        smtpClient.EnableSsl = false;
+
+        //        //message.Attachments.Add(new Attachment(filePath));
+
+
+        //        smtpClient.Credentials = new System.Net.NetworkCredential("bookup@rpaegypt.com", "P@ssw0rd");
+        //        smtpClient.Timeout = 15 * 60 * 1000;
+        //        smtpClient.Send(message);
+
+        //        message = null;
+        //        return 0;
+        //    }
+        //    catch (Exception exxxx)
+        //    {
+        //        string msg = exxxx.Message;
+        //        return -1;
+        //    }
+        //}
+        public int   SendForgetPasswordMail(string ToEmail)
+        {  
+
+            var fromEmail = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["SenderEmailID"], "Agriculure");
+
+            var toEmail = new MailAddress(ToEmail);
+            var fromEmailPassword = System.Configuration.ConfigurationManager.AppSettings["SenderEmailPassword"]; // Replace with actual password
+            string subject = "Temporary Password";
+
+         
+            string body = "Use This Password Temporarly, we recommend you to change it.<br/> Password: 1456";
+            var smtp = new SmtpClient
             {
-                SmtpClient smtpClient = new SmtpClient("dc-b34e10b12d8e.rpaegypt.com", 587);
-                MailMessage message = new MailMessage();
-                message.From = new MailAddress("alisakralaraby@gmail.com");
-                message.Body = "Use This Password Temporarly, we recommend you to change it. /n 1456";
-                message.To.Add(ToEmail);
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
 
-                message.Subject = "Temporary Password";
-                smtpClient.UseDefaultCredentials = true;
-                smtpClient.EnableSsl = false;
-
-                //message.Attachments.Add(new Attachment(filePath));
-
-
-                smtpClient.Credentials = new System.Net.NetworkCredential("bookup@rpaegypt.com", "P@ssw0rd");
-                smtpClient.Timeout = 15 * 60 * 1000;
-                smtpClient.Send(message);
-
-                message = null;
-                return 0;
-            }
-            catch (Exception exxxx)
+            using (var message = new MailMessage(fromEmail, toEmail)
             {
-                string msg = exxxx.Message;
-                return -1;
-            }
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                try
+                {
+                    smtp.Send(message);
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    return -1;
+                    
+                } 
         }
     }
 }
