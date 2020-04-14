@@ -19,6 +19,10 @@ namespace Agriculure.WebUi.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            if (TempData["RelatedDataError"] != null)
+            {
+                ViewBag.RelatedDataError = "Can`t delete offer bacause of related offers";
+            }
             User user = (User)Session["currentUser"];
             if (user != null)
             {
@@ -79,15 +83,15 @@ namespace Agriculure.WebUi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product,HttpPostedFileBase imageFile)
+        public ActionResult Create([Bind(Include = "ID,Name,Liecnse,UserID,Description,image")] Product product, HttpPostedFileBase imageFile)
         {
-            if(Session["currentUser"] == null)
+            if (Session["currentUser"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
             if (ModelState.IsValid)
             {
-                product.UserID = (Session["currentUser"] as User).ID;               
+                product.UserID = (Session["currentUser"] as User).ID;
                 if (imageFile != null && imageFile.ContentLength > 0)
                 {
                     string path = Path.Combine(Server.MapPath("~/imgs"),
@@ -149,30 +153,21 @@ namespace Agriculure.WebUi.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(long id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Product product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            catch (Exception e)
             {
-                return HttpNotFound();
+                TempData["RelatedDataError"] = "RelatedDataError";
+                return RedirectToAction("Index");
             }
-            return View(product);
-        }
 
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -213,12 +208,12 @@ namespace Agriculure.WebUi.Controllers
         {
             var user = (User)Session["currentUser"];
             var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
-            if(product == null)
+            if (product == null)
                 return PartialView(null);
 
             List<ICollection<Contract>> prodContracts = new List<ICollection<Contract>>();
             List<ProductDetails> productDetails = new List<ProductDetails>();
-            
+
             if (product != null)
             {
                 var prodOffers = db.Offers.Where(x => x.ProductID == product.ID).ToList();
@@ -229,7 +224,7 @@ namespace Agriculure.WebUi.Controllers
                     {
                         Description = item.Descreption,
                         ActionDate = item.StartDate,
-                        UserName1 = item.User.Name, 
+                        UserName1 = item.User.Name,
                         ActionType = "Offer On This Product"
                     });
                 }
@@ -256,7 +251,7 @@ namespace Agriculure.WebUi.Controllers
                 });
                 productDetails.OrderByDescending(x => x.ActionDate);
             }
-            
+
             return PartialView(productDetails);
         }
 
