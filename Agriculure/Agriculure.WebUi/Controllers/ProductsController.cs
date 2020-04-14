@@ -279,7 +279,7 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult GetByName(DateTime? date = null, string name = "")
         {
             User user = (User)Session["currentUser"];
-            var products = db.Products.Where(x => x.UserID == user.ID).ToList();
+            var products = db.Products.Where(x => x.UserID != user.ID).ToList();
 
             if (name != null && name != "")
             {
