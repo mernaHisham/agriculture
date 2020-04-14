@@ -15,7 +15,7 @@
     <h2 class="py-1">Product History</h2>
     <div class="row py-1 justify-content-center" style="width: 100%">
         <div class="col-6">
-            <input class="form-control" type="text" id="product_id" placeholder="Enter Product Id" value="@ID" />
+            <input class="form-control" type="number" id="product_id" placeholder="Enter Product Id" value="@ID" />
             <span class="text-danger font-weight-bold" id="erorr" style="visibility: hidden">enter a valid product id</span>
         </div>
         <div class="col-2">
@@ -62,7 +62,7 @@
                         //debugger
                         $(".loading-container").css("display", "none")
                         $('#prod_details').html(data);
-                        
+
                     },
                     failure: function (errMsg) {
                         debugger
