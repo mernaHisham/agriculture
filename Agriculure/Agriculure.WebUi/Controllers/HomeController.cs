@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Agriculure.WebUi.Controllers
 {
@@ -59,12 +61,12 @@ namespace Agriculure.WebUi.Controllers
         [HttpPost]
         public ActionResult Register(UserVM userVM)
         {
+
             if (_dbContext.Users.Any(z => z.Email == userVM.Email))
             {
                 TempData["EmailExists"] = "EmailNotValid";
                 return RedirectToAction("Register");
             }
-
             if (ModelState.IsValid)
             {
                 var result = authBLL.RegisterUser(userVM);
