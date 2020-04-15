@@ -358,7 +358,6 @@ D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\en\Agriculure.WebUi.resourc
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.csproj.CopyComplete
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 D:\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
-E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.cc.resources
 E:\Repos\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.dll.config
 E:\Repos\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.dll
 E:\Repos\agriculture\Agriculure\Agriculure.WebUi\bin\Agriculure.WebUi.pdb
@@ -558,3 +557,4 @@ D:\Company\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.cs
 D:\Company\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.dll
 D:\Company\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.pdb
 D:\Company\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.dd.resources
+E:\StartUp\grad-project\solution\agriculture\Agriculure\Agriculure.WebUi\obj\Debug\Agriculure.WebUi.Migrations.dd.resources

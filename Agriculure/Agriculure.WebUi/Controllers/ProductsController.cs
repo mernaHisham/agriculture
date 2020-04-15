@@ -182,9 +182,9 @@ namespace Agriculure.WebUi.Controllers
         [HttpGet]
         public ActionResult ProductHistory(int Id = 0)
         {
-            var user = (User)Session["currentUser"];
-            if (user == null)
-                return RedirectToAction("Login", "Home");
+            //var user = (User)Session["currentUser"];
+            //if (user == null)
+            //    return RedirectToAction("Login", "Home");
 
             ViewBag.prodId = Id;
 
@@ -195,9 +195,10 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult ProdDetails(long ID)
         {
             var user = (User)Session["currentUser"];
-            var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
-            if (product == null)
-                return PartialView(null);
+            var product = db.Products.Where(x => x.ID == ID).FirstOrDefault();
+            //var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            //if (product == null)
+            //    return PartialView(null);
 
             return PartialView(product);
         }
@@ -207,9 +208,10 @@ namespace Agriculure.WebUi.Controllers
         public ActionResult ProdHistory(long ID)
         {
             var user = (User)Session["currentUser"];
-            var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
-            if (product == null)
-                return PartialView(null);
+            var product = db.Products.Where(x => x.ID == ID).FirstOrDefault();
+            //var product = db.Products.Where(x => x.ID == ID && x.UserID == user.ID).FirstOrDefault();
+            //if (product == null)
+            //    return PartialView(null);
 
             List<ICollection<Contract>> prodContracts = new List<ICollection<Contract>>();
             List<ProductDetails> productDetails = new List<ProductDetails>();
@@ -250,6 +252,10 @@ namespace Agriculure.WebUi.Controllers
                     ActionDate = product.CreationDate
                 });
                 productDetails.OrderByDescending(x => x.ActionDate);
+            }
+            else
+            {
+                return PartialView(null);
             }
 
             return PartialView(productDetails);
